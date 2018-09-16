@@ -1,4 +1,4 @@
-#M-A-R-X Backend
+# M-A-R-X Backend
 
 The API for the mobile application Money And Relationship eXperience
 Just an app to manage to who I owe money and who owe me money
@@ -7,7 +7,7 @@ Nothing interesting for the moment, it's a personal and school project that I do
 
 More details will come later
 
-# Lumen PHP Framework Information
+## Lumen PHP Framework Information
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
 [![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
