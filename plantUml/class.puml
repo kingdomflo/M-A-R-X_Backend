@@ -1,0 +1,30 @@
+@startuml class
+object User {
+  id: integer PK
+  username: varchar(50)
+  idauth: varchar
+}
+
+object Relationship {
+  id: integer PK
+  id_user: integer FK
+  id_relationshiptype: integer FK
+  name: varchar
+}
+
+object RelationshipType {
+  id: integer PK
+  label: varchar
+}
+
+object User_RelationshipType {
+  id: integer PK
+  id_user: integer FK
+  id_relationshiptype: integer FK
+}
+
+User "1" -- "0..*" Relationship
+Relationship "0..*" -- "1" RelationshipType
+RelationshipType "1" -- "0..*" User_RelationshipType
+User_RelationshipType "0..*" -- "1" User
+@enduml
