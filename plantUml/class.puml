@@ -9,7 +9,7 @@ object User {
 object Relationship {
   id: integer PK
   id_user: integer FK
-  id_relationshiptype: integer FK
+  id_user_relationshiptype: integer FK
   name: varchar
 }
 
@@ -59,7 +59,7 @@ object ReminderDate {
 }
 
 Relationship "0..*" -- "1" User
-Relationship "0..*" -- "1" RelationshipType
+Relationship "0..*" -- "1" User_RelationshipType
 RelationshipType "1" -- "0..*" User_RelationshipType
 User_RelationshipType "0..*" -- "1" User
 User_RelationshipType "0..*" -- "1" Reminder_Type
