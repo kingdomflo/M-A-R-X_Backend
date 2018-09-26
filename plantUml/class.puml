@@ -1,8 +1,9 @@
 @startuml class
 object User {
   id: integer PK
-  username: varchar(50)
   idauth: varchar
+  username: varchar(50)
+  mail: varchar
 }
 
 object Relationship {
@@ -23,8 +24,48 @@ object User_RelationshipType {
   id_relationshiptype: integer FK
 }
 
-User "1" -- "0..*" Relationship
+object Reminder_Type {
+  id: integer PK
+  id_user_relationshiptype: integer FK
+  day: integer
+}
+
+object Currency {
+  id: integer PK
+  name: varchar(50)
+  label: varchar(3)
+}
+
+object User_Currency {
+  id: integer PK
+  id_user: integer FK
+  id_currency: integer FK
+}
+
+object Payment {
+  id: integer PK
+  id_relationship: integer FK
+  id_user_currency FK
+  amount: integer
+  date: date
+  type: varchar(3) deb|cre
+  refunded: byte
+}
+
+object ReminderDate {
+  id: integer PK
+  id_payment: integer FK
+  date: date
+}
+
+Relationship "0..*" -- "1" User
 Relationship "0..*" -- "1" RelationshipType
 RelationshipType "1" -- "0..*" User_RelationshipType
 User_RelationshipType "0..*" -- "1" User
+User_RelationshipType "0..*" -- "1" Reminder_Type
+User_Currency "0..*" -- "1" Currency
+User "1" -- "0..1" User_Currency
+Payment "0..*" -- "1" Relationship
+Payment "0..*" -- "1" User_Currency
+Payment "1" -- "0..*" ReminderDate
 @enduml
