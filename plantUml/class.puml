@@ -45,7 +45,9 @@ object User_Currency {
 object Payment {
   id: integer PK
   id_relationship: integer FK
-  id_user_currency FK
+  id_user_currency: integer FK
+  title: varchar(20)
+  detail: varchar(280)
   amount: integer
   date: date
   type: varchar(3) deb|cre
