@@ -37,4 +37,8 @@ class RelationshipController extends Controller
     return array($relationship);
   }
 
+  public function update(Request $request) {
+    
+  }
+
 }
