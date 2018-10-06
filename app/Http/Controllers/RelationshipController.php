@@ -11,8 +11,17 @@ use App\MarxRelationship;
 class RelationshipController extends Controller
 {
 
-  public function getAll()
+  public function __construct()
   {
+    $this->middleware('auth', ['only' => [
+      'getAll'
+    ]]);
+  }
+
+  public function getAll(Request $request)
+  {
+    $user = $request->user();
+    //$user->id;
     $liste = MarxRelationship::all();
     return $liste;
   }
@@ -37,8 +46,9 @@ class RelationshipController extends Controller
     return array($relationship);
   }
 
-  public function update(Request $request) {
-    
+  public function update(Request $request)
+  {
+
   }
 
 }

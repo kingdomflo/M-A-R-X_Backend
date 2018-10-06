@@ -9,11 +9,14 @@
 | It is a breeze. Simply tell Lumen the URIs it should respond to
 | and give it the Closure to call when that URI is requested.
 |
-*/
+ */
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->post('login', 'UserController@login');
+
+//$router->get('relationship', ['middleware' => 'auth', 'uses' => 'RelationshipController@getAll']);
 $router->get('relationship', 'RelationshipController@getAll');
 $router->post('relationship', 'RelationshipController@create');
