@@ -1,0 +1,31 @@
+{
+	"variables": [],
+	"info": {
+		"name": "MARX",
+		"_postman_id": "4cdaeb54-7729-c747-373a-d5e41a9c5387",
+		"description": "TFE project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get relation",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/1/relationshipType",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Colpppp\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
