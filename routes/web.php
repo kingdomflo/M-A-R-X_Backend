@@ -19,4 +19,9 @@ $router->post('login', 'UserController@login');
 
 //$router->get('relationship', ['middleware' => 'auth', 'uses' => 'RelationshipController@getAll']);
 $router->get('relationship', 'RelationshipController@getAll');
-$router->post('relationship', 'RelationshipController@create');
+
+$router->get('relationshipType', 'RelationshipTypeController@getAll');
+$router->post('relationshipType', 'RelationshipTypeController@create');
+
+$router->get('user/{id}/relationshipType', 'UserController@getAllRelationshipType');
+$router->post('user/{id}/relationshipType', 'UserController@addRelationshipType');

@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 use App\MarxRelationship;
+use App\MarxRelationshipType;
+use App\MarxUserRelationshipType;
+use App\MarxUser;
 
-class RelationshipController extends Controller
+class RelationshipTypeController extends Controller
 {
 
   public function __construct()
@@ -21,11 +24,10 @@ class RelationshipController extends Controller
 
   public function getAll(Request $request)
   {
-    $user = $request->user();
-    //$user->id;
-    $list = MarxRelationship::all();
+    $list = MarxRelationshipType::all();
     return $list;
   }
+
 
   public function create(Request $request)
   {
@@ -40,16 +42,11 @@ class RelationshipController extends Controller
       );
     }
 
-    $relationship = new MarxRelationship;
+    $relationship = new MarxRelationshiptype;
     $relationship->name = $request->input('name');
     $relationship->save();
 
     return array($relationship);
-  }
-
-  public function update(Request $request)
-  {
-
   }
 
 }

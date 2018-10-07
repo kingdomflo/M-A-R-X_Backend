@@ -12,8 +12,8 @@ class MarxRelationship extends Model
     return $this->belongsTo('App\MarxUser');
   }
 
-  public function marx_relationship()
+  public function marx_user_relationship_type()
   {
-    return $this->belongsTo('App\MarxRelationship');
+    return $this->belongsTo('App\MarxUserRelationshipType');
   }
 }

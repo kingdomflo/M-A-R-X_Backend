@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMarxUsersRelationshipTypesTable extends Migration
+class CreateMarxUserRelationshipTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class CreateMarxUsersRelationshipTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('marx_users_relationship_types', function (Blueprint $table) {
+        Schema::dropIfExists('marx_user_relationship_types');
+        Schema::create('marx_user_relationship_types', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('marx_users');
             $table->integer('relationship_type_id')->unsigned();
@@ -29,6 +31,6 @@ class CreateMarxUsersRelationshipTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marx_users_relationship_types');
+        Schema::dropIfExists('marx_user_relationship_types');
     }
 }

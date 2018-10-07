@@ -14,6 +14,8 @@ class CreateMarxUsersTable extends Migration
      */
     public function up()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('marx_users');
         Schema::create('marx_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();

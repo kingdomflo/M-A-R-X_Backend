@@ -52,6 +52,7 @@ object Payment {
   date: date
   type: varchar(3) deb|cre
   refunded: byte
+  refunded_date: date
 }
 
 object ReminderDate {

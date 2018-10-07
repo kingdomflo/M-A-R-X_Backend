@@ -13,13 +13,14 @@ class CreateMarxRelationshipsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('marx_relationships');
         Schema::create('marx_relationships', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('marx_users');
-            $table->integer('relationship_type_id')->unsigned();
-            $table->foreign('relationship_type_id')->references('id')->on('marx_relationship_types');
+            $table->integer('user_relationship_type_id')->unsigned();
+            $table->foreign('user_relationship_type_id')->references('id')->on('marx_user_relationship_types');
             $table->timestamps();
         });
     }
