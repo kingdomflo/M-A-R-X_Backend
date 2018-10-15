@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class MarxUser extends Model
 {
-  public function marx_relationship()
-  {
-    return $this->hasMany('App\MarxRelationship');
-  }
 
   public function marx_user_relationship_type()
   {
