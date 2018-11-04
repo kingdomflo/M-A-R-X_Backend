@@ -110,6 +110,23 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Delete relationshiptype by user",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/relationshipType/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

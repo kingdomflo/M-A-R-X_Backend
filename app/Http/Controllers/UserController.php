@@ -22,7 +22,7 @@ class UserController extends Controller
   {
     //To have security
     $this->middleware('auth', ['only' => [
-      'getAll', 'getAllRelationshipType', 'update', 'addRelationshipType', 'updateName'
+      'getAll', 'getAllRelationshipType', 'update', 'addRelationshipType', 'updateName', 'deleteRelationshipType'
     ]]);
   }
 
@@ -124,9 +124,18 @@ class UserController extends Controller
     return response()->json($relationshipType);
   }
 
-  public function update(Request $request)
+  public function deleteRelationshipType(Request $request, $id)
   {
-
+    $relationshipType = MarxUserRelationshipType::find($id);
+    if($relationshipType == null) {
+      return array(
+        'error' => true,
+        'message' => ['relationship type not linked to this user']
+      );
+    }
+    $relationshipType->delete();
+    return response()->json($relationshipType);
   }
+
 
 }

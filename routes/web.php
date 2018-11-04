@@ -26,3 +26,4 @@ $router->post('relationshipType', 'RelationshipTypeController@create');
 $router->put('user', 'UserController@updateName');
 $router->get('user/relationshipType', 'UserController@getAllRelationshipType');
 $router->post('user/relationshipType', 'UserController@addRelationshipType');
+$router->delete('user/relationshipType/{id}', 'UserController@deleteRelationshipType');
