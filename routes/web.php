@@ -23,5 +23,6 @@ $router->get('relationship', 'RelationshipController@getAll');
 $router->get('relationshipType', 'RelationshipTypeController@getAll');
 $router->post('relationshipType', 'RelationshipTypeController@create');
 
-$router->get('user/{id}/relationshipType', 'UserController@getAllRelationshipType');
-$router->post('user/{id}/relationshipType', 'UserController@addRelationshipType');
+$router->put('user', 'UserController@updateName');
+$router->get('user/relationshipType', 'UserController@getAllRelationshipType');
+$router->post('user/relationshipType', 'UserController@addRelationshipType');

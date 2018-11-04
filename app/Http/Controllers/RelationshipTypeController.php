@@ -16,10 +16,10 @@ class RelationshipTypeController extends Controller
 
   public function __construct()
   {
-    // To have security
-    // $this->middleware('auth', ['only' => [
-    //   'getAll'
-    // ]]);
+    //To have security
+    $this->middleware('auth', ['only' => [
+      'getAll'
+    ]]);
   }
 
   public function getAll(Request $request)

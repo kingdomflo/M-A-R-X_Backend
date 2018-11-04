@@ -8,9 +8,9 @@
 	},
 	"item": [
 		{
-			"name": "Get relation",
+			"name": "Login - Subscribe",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/1/relationshipType",
+				"url": "http://localhost/M-A-R-X_Backend/public/login",
 				"method": "POST",
 				"header": [
 					{
@@ -21,7 +21,91 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\" : \"Colpppp\"\n}"
+					"raw": "{\r\n\"user_id\" :\"auth0|5b8bcdb84b3e140de3010e77\",\r\n\"email\" :\"kingdomflo16@gmail.com\",\r\n\"name\" : \"John Doe\"\r\n}\r\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get all relationshiptype",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/relationshipType",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get all relationshiptype by user",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/relationshipType",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add relationshiptype to user",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/relationshipType",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"bofilouu\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update user name",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Flo new name\"\n}"
 				},
 				"description": ""
 			},

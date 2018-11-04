@@ -43,6 +43,7 @@ class AuthServiceProvider extends ServiceProvider
                 $signer = new Sha256();
                 $token = (new Parser())->parse((string)$header);
                 if ($token->verify($signer, env('JWT_TOKEN_SIGN'))) {
+                    $request->request->add(['token_user_id'=>$token->getClaim('id')]);
                     return new GenericUser(['id' => $token->getClaim('id'), 'name' => 'Taylor']);
                 } else {
                     return null;

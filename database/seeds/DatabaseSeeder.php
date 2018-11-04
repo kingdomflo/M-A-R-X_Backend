@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         // $this->call('UsersTableSeeder');
 
         $user = new MarxUser;
-        $user->name = 'Florian';
+        $user->name = 'kingdomflo16@gmail.com';
         $user->email = 'kingdomflo16@gmail.com';
-        $user->auth0_id = '5b8bcdb84b3e140de3010e77';
+        $user->auth0_id = 'auth0|5b8bcdb84b3e140de3010e77';
         $user->save();
 
         $relationshipType = new MarxRelationshipType();
