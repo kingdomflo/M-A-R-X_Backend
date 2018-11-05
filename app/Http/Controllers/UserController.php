@@ -83,7 +83,7 @@ class UserController extends Controller
 
   public function getAllRelationshipType(Request $request)
   {
-    $list = MarxUser::find($request->input('token_user_id'))->marx_relationship_type()->get();
+    $list = MarxUser::find($request->input('token_user_id'))->relationship_type()->get();
     return $list;
   }
 

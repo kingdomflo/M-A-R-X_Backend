@@ -17,8 +17,11 @@ $router->get('/', function () use ($router) {
 
 $router->post('login', 'UserController@login');
 
-//$router->get('relationship', ['middleware' => 'auth', 'uses' => 'RelationshipController@getAll']);
-$router->get('relationship', 'RelationshipController@getAll');
+$router->get('user/relationship', 'RelationshipController@getAll');
+$router->post('user/relationship', 'RelationshipController@create');
+$router->get('user/relationship/{id}', 'RelationshipController@getOne');
+$router->put('user/relationship/{id}', 'RelationshipController@update');
+$router->delete('user/relationship/{id}', 'RelationshipController@delete');
 
 $router->get('relationshipType', 'RelationshipTypeController@getAll');
 $router->post('relationshipType', 'RelationshipTypeController@create');

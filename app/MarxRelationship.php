@@ -12,8 +12,10 @@ class MarxRelationship extends Model
     return $this->belongsTo('App\MarxUser');
   }
 
-  public function marx_user_relationship_type()
+  public function user_relationship_type()
   {
-    return $this->belongsTo('App\MarxUserRelationshipType');
+    return $this->hasOne('App\MarxUserRelationshipType', 'id', 'user_relationship_type_id')->with('relationship_type');
   }
+
+
 }
