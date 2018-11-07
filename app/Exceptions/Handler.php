@@ -9,6 +9,12 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Illuminate\Http\Exception\HttpResponseException;
+use Illuminate\Http\Response;
+use Illuminate\Database\QueryException;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -45,6 +51,41 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        //return parent::render($request, $e);
+
+        if ($e instanceof HttpResponseException) {
+            $status = Response::HTTP_INTERNAL_SERVER_ERROR;
+            $e = $e->getMessage();
+        } elseif ($e instanceof MethodNotAllowedHttpException) {
+            $status = Response::HTTP_METHOD_NOT_ALLOWED;
+            $e = "You aren't authorize to acces to this method";
+        } elseif ($e instanceof NotFoundHttpException) {
+            $status = Response::HTTP_NOT_FOUND;
+            $e = "This route don't exist";
+        } elseif ($e instanceof AuthorizationException) {
+            $status = Response::HTTP_FORBIDDEN;
+            $e = "You aren't authorize to acces to this route";
+        } elseif ($e instanceof \Dotenv\Exception\ValidationException && $e->getResponse()) {
+            $status = Response::HTTP_BAD_REQUEST;
+            $e = "Bad validation";
+        } elseif ($e instanceof QueryException) {
+            $status = 406;
+            //$e = $e->getMessage();
+            //$e = $e->getPrevious()->getMessage();
+            //$e = $e->getPrevious()->errorInfo[1];
+            if ($e = $e->getPrevious()->errorInfo[1] == 1062) {
+                $e = "This entry already exist";
+            } else {
+                $e = "There is an error with the database";
+            }
+        } else {
+            $status = Response::HTTP_INTERNAL_SERVER_ERROR;
+            $e = "There is a internal error, please contact support";
+        }
+        return response()->json([
+            'success' => false,
+            'status' => $status,
+            'message' => [$e]
+        ], $status);
     }
 }

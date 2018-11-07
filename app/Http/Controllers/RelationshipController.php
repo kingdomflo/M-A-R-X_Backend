@@ -70,7 +70,7 @@ class RelationshipController extends Controller
     }
 
     $relationship = MarxRelationship::find($id);
-    if($relationship->user_id != $request->input('token_user_id')) {
+    if ($relationship->user_id != $request->input('token_user_id')) {
       return array(
         'error' => true,
         'message' => 'this relation didn\'t belong to you'
@@ -87,7 +87,7 @@ class RelationshipController extends Controller
   {
     // TODO test delete cascade after
     $relationship = MarxRelationship::find($id);
-    if($relationship->user_id != $request->input('token_user_id')) {
+    if ($relationship->user_id != $request->input('token_user_id')) {
       return array(
         'error' => true,
         'message' => 'this relation didn\'t belong to you'
