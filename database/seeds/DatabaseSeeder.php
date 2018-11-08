@@ -5,6 +5,8 @@ use App\MarxRelationship;
 use App\MarxUser;
 use App\MarxRelationshipType;
 use App\MarxUserRelationshipType;
+use App\MarxCurrencies;
+use App\MarxUserCurrencies;
 
 class DatabaseSeeder extends Seeder
 {
@@ -39,6 +41,27 @@ class DatabaseSeeder extends Seeder
         $userRelationshipType->user_id = 1;
         $userRelationshipType->relationship_type_id = 2;
         $userRelationshipType->save();
+
+        $relationship = new MarxRelationship();
+        $relationship->name = "Samy";
+        $relationship->user_relationship_type_id = 1;
+        $relationship->save();
+
+        $currency = new MarxCurrencies();
+        $currency->name = "Euro";
+        $currency->label = "eur";
+        $currency->save();
+
+        $currency = new MarxCurrencies();
+        $currency->name = "Pièce d'or";
+        $currency->label = "po";
+        $currency->save();
+
+        $userCurrency = new MarxUserCurrencies();
+        $userCurrency->user_id = 1;
+        $userCurrency->currencies_id = 1;
+        $userCurrency->save();
+
 
 
         $this->command->info('User table seeded!');

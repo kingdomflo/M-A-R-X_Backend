@@ -24,9 +24,16 @@ $router->put('user/relationship/{id}', 'RelationshipController@update');
 $router->delete('user/relationship/{id}', 'RelationshipController@delete');
 
 $router->get('relationshipType', 'RelationshipTypeController@getAll');
-$router->post('relationshipType', 'RelationshipTypeController@create');
+//$router->post('relationshipType', 'RelationshipTypeController@create');
 
 $router->put('user', 'UserController@updateName');
 $router->get('user/relationshipType', 'UserController@getAllRelationshipType');
 $router->post('user/relationshipType', 'UserController@addRelationshipType');
 $router->delete('user/relationshipType/{id}', 'UserController@deleteRelationshipType');
+$router->get('user/currencies', 'UserController@getAllCurrencies');
+$router->post('user/currencies', 'UserController@addCurrencies');
+$router->delete('user/currencies/{id}', 'UserController@deleteCurrencies');
+
+
+$router->get('currencies', 'CurrenciesController@getAll');
+

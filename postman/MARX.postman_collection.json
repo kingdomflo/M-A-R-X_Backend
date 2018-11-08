@@ -228,6 +228,65 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Get all currencies",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/currencies",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get all currencies by user",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/currencies",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add currency to user",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/currencies",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Euro4266685\",\n\t\"label\" : \"eur\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

@@ -51,8 +51,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        //return parent::render($request, $e);
-
+        if (env('APP_DEBUG')) {
+            return parent::render($request, $e);
+        }
+        
         if ($e instanceof HttpResponseException) {
             $status = Response::HTTP_INTERNAL_SERVER_ERROR;
             $e = $e->getMessage();
