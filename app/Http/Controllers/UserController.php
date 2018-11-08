@@ -192,7 +192,7 @@ class UserController extends Controller
     return response()->json($currency);
   }
 
-  public function deleteRelationshipType(Request $request, $id)
+  public function deleteCurrencies(Request $request, $id)
   {
     $currency = MarxUserCurrencies::find($id);
     if ($currency == null) {
