@@ -93,7 +93,7 @@ class UserController extends Controller
 
   public function getAllRelationshipType(Request $request)
   {
-    $list = MarxUser::find($request->input('token_user_id'))->relationship_type()->get();
+    $list = MarxUserRelationshipType::where('user_id', '=',$request->input('token_user_id'))->with('relationship_type')->get();
     return $list;
   }
 
@@ -149,7 +149,7 @@ class UserController extends Controller
 
   public function getAllCurrencies(Request $request)
   {
-    $list = MarxUser::find($request->input('token_user_id'))->currencies()->get();
+    $list = MarxUserCurrencies::where('user_id', '=', $request->input('token_user_id'))->with('currency')->get();
     return $list;
   }
 
