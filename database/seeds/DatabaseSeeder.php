@@ -7,6 +7,7 @@ use App\MarxRelationshipType;
 use App\MarxUserRelationshipType;
 use App\MarxCurrencies;
 use App\MarxUserCurrencies;
+use App\MarxPayment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -62,7 +63,26 @@ class DatabaseSeeder extends Seeder
         $userCurrency->currencies_id = 1;
         $userCurrency->save();
 
+        $payment = new MarxPayment();
+        $payment->user_id = 1;
+        $payment->user_currencies_id = 1;
+        $payment->relationship_id = 1;
+        $payment->title = "Repas du midi";
+        $payment->detail = "C'était vraiment bon";
+        $payment->amount = 12.50;
+        $payment->date = date('Y-m-d');
+        $payment->type = 'deb';
+        $payment->save();
 
+        $payment = new MarxPayment();
+        $payment->user_id = 1;
+        $payment->user_currencies_id = 1;
+        $payment->relationship_id = 1;
+        $payment->title = "Livre";
+        $payment->amount = 9;
+        $payment->date = date('Y-m-d');
+        $payment->type = 'cre';
+        $payment->save();
 
         $this->command->info('User table seeded!');
     }

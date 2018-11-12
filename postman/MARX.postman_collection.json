@@ -287,6 +287,61 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Get all payment by user",
+			"request": {
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/user/payment?type=cre",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"user",
+						"payment"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "cre",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get one payment by user",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/payment/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
