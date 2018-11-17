@@ -342,6 +342,73 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "delete on epayment",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/payment/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add payment",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/payment",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"relationship_id\": 1,\n        \"user_currencies_id\": 1,\n        \"title\": \"Indien\",\n        \"amount\": 9,\n        \"date\": \"2018-11-12\",\n        \"type\": \"cre\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update a payment",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/payment/3",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"relationship_id\": 1,\n        \"user_currencies_id\": 1,\n        \"title\": \"Indiennnelololol\",\n        \"amount\": 95,\n        \"date\": \"2018-11-12\",\n        \"detail\" : \"mwais\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

@@ -25,7 +25,7 @@ class PaymentController extends Controller
   {
     //To have security
     $this->middleware('auth', ['only' => [
-      'getAllByUser', 'getOneByUser'
+      'getAllByUser', 'getOneByUser', 'delete', 'create', 'update'
     ]]);
   }
 
@@ -52,6 +52,101 @@ class PaymentController extends Controller
       ->with('user_currency')
       ->first();
     return response()->json($payment);
+  }
+
+  public function create(Request $request)
+  {
+    $validator = Validator::make($request->all(), [
+      'relationship_id' => 'required',
+      'user_currencies_id' => 'required',
+      'title' => 'required',
+      'amount' => 'required',
+      'date' => 'required',
+      'type' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+      return array(
+        'error' => true,
+        'message' => $validator->errors()->all()
+      );
+    }
+
+    $payment = new MarxPayment;
+    $payment->title = $request->input('title');
+    $payment->relationship_id = $request->input('relationship_id');
+    $payment->user_id = $request->input('token_user_id');
+    $payment->date = $request->input('date');
+    $payment->user_currencies_id = $request->input('user_currencies_id');
+    $payment->amount = $request->input('amount');
+    $payment->type = $request->input('type');
+
+    if ($request->input('detail')) {
+      $payment->detail = $request->input('detail');
+    }
+    $payment->save();
+
+    return response()->json($payment);
+  }
+
+  public function update(Request $request, $id)
+  {
+    $validator = Validator::make($request->all(), [
+      'relationship_id' => 'required',
+      'user_currencies_id' => 'required',
+      'title' => 'required',
+      'amount' => 'required',
+      'date' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+      return array(
+        'error' => true,
+        'message' => $validator->errors()->all()
+      );
+    }
+
+    $payment = MarxPayment::find($id);
+    if ($payment->user_id != $request->input('token_user_id')) {
+      return array(
+        'error' => true,
+        'message' => 'this payment didn\'t belong to you'
+      );
+    }
+
+    $payment->title = $request->input('title');
+    $payment->relationship_id = $request->input('relationship_id');
+    $payment->date = $request->input('date');
+    $payment->user_currencies_id = $request->input('user_currencies_id');
+    $payment->amount = $request->input('amount');
+
+    if ($request->input('detail')) {
+      $payment->detail = $request->input('detail');
+    }
+
+    $payment->save();
+
+    return response()->json($payment);
+  }
+
+  public function delete(Request $request, $id)
+  {
+    // TODO test delete cascade after
+    $payment = MarxPayment::find($id);
+    if ($payment == null) {
+      return array(
+        'error' => true,
+        'message' => 'This payment didn\'t exist'
+      );
+    }
+    if ($payment->user_id != $request->input('token_user_id')) {
+      return array(
+        'error' => true,
+        'message' => 'this payment didn\'t belong to you',
+      );
+    }
+    $payment->delete();
+    return $payment;
   }
 
 }

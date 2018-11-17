@@ -36,6 +36,9 @@ $router->delete('user/currencies/{id}', 'UserController@deleteCurrencies');
 
 $router->get('user/payment', 'PaymentController@getAllByUser');
 $router->get('user/payment/{id}', 'PaymentController@getOneByUser');
+$router->post('user/payment', 'PaymentController@create');
+$router->put('user/payment/{id}', 'PaymentController@update');
+$router->delete('user/payment/{id}', 'PaymentController@delete');
 
 $router->get('currencies', 'CurrenciesController@getAll');
 

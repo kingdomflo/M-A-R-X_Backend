@@ -52,7 +52,7 @@ class RelationshipController extends Controller
     $relationship->user_id = $request->input('token_user_id');
     $relationship->save();
 
-    return array($relationship);
+    return response()->json($relationship);
   }
 
   public function update(Request $request, $id)
@@ -80,13 +80,19 @@ class RelationshipController extends Controller
     $relationship->user_relationship_type_id = $request->input('relationship_type_id');
     $relationship->save();
 
-    return $relationship;
+    return response()->json($relationship);
   }
 
   public function delete(Request $request, $id)
   {
     // TODO test delete cascade after
     $relationship = MarxRelationship::find($id);
+    if($relationship == null) {
+      return array(
+        'error' => true,
+        'message' => 'This relationship didn\'t exist'
+      );
+    }
     if ($relationship->user_id != $request->input('token_user_id')) {
       return array(
         'error' => true,
@@ -94,7 +100,7 @@ class RelationshipController extends Controller
       );
     }
     $relationship->delete();
-    return $relationship;
+    return response()->json($relationship);
   }
 
 }
