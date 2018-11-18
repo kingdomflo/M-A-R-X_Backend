@@ -6,11 +6,11 @@ use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-use App\MarxRelationship;
-use App\MarxRelationshipType;
-use App\MarxUserRelationshipType;
-use App\MarxUser;
-use App\MarxCurrencies;
+use App\Models\MarxRelationship;
+use App\Models\MarxRelationshipType;
+use App\Models\MarxUserRelationshipType;
+use App\Models\MarxUser;
+use App\Models\MarxCurrencies;
 
 class CurrenciesController extends Controller
 {

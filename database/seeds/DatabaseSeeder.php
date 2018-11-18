@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\MarxRelationship;
-use App\MarxUser;
-use App\MarxRelationshipType;
-use App\MarxUserRelationshipType;
-use App\MarxCurrencies;
-use App\MarxUserCurrencies;
-use App\MarxPayment;
-use App\MarxReminderDate;
+use App\Models\MarxRelationship;
+use App\Models\MarxUser;
+use App\Models\MarxRelationshipType;
+use App\Models\MarxUserRelationshipType;
+use App\Models\MarxCurrencies;
+use App\Models\MarxUserCurrencies;
+use App\Models\MarxPayment;
+use App\Models\MarxReminderDate;
 
 class DatabaseSeeder extends Seeder
 {

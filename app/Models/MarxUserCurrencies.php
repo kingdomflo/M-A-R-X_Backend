@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,7 +14,7 @@ class MarxUserCurrencies extends Model
 
   public function currency()
   {
-    return $this->hasOne('App\MarxCurrencies', 'id', 'currencies_id');
+    return $this->hasOne('App\Models\MarxCurrencies', 'id', 'currencies_id');
   }
 
 }

@@ -6,8 +6,8 @@ use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-use App\MarxRelationship;
-use App\MarxUser;
+use App\Models\MarxRelationship;
+use App\Models\MarxUser;
 
 class RelationshipController extends Controller
 {
