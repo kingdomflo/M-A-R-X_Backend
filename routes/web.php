@@ -40,5 +40,9 @@ $router->post('user/payment', 'PaymentController@create');
 $router->put('user/payment/{id}', 'PaymentController@update');
 $router->delete('user/payment/{id}', 'PaymentController@delete');
 
+$router->get('user/reminderdate', 'ReminderDateController@getAllByUser');
+$router->post('user/reminderdate', 'ReminderDateController@create');
+$router->delete('user/reminderdate/{id}', 'ReminderDateController@delete');
+
 $router->get('currencies', 'CurrenciesController@getAll');
 

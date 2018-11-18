@@ -409,6 +409,65 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Get all reminder date by user",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/reminderdate",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete reminder date",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/reminderdate/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add reminder date",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/reminderdate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"payment_id\" : 2,\n\t\"date\" : \"2018-12-15\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

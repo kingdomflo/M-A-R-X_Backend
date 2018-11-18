@@ -8,6 +8,7 @@ use App\MarxUserRelationshipType;
 use App\MarxCurrencies;
 use App\MarxUserCurrencies;
 use App\MarxPayment;
+use App\MarxReminderDate;
 
 class DatabaseSeeder extends Seeder
 {
@@ -83,6 +84,11 @@ class DatabaseSeeder extends Seeder
         $payment->date = date('Y-m-d');
         $payment->type = 'cre';
         $payment->save();
+
+        $reminderDate = new MarxReminderDate();
+        $reminderDate->payment_id = 1;
+        $reminderDate->date = '2018-12-24';
+        $reminderDate->save();
 
         $this->command->info('User table seeded!');
     }

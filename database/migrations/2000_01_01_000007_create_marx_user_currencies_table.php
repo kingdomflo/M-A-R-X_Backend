@@ -20,6 +20,7 @@ class CreateMarxUserCurrenciesTable extends Migration
             $table->foreign('user_id')->references('id')->on('marx_users');
             $table->integer('currencies_id')->unsigned();
             $table->foreign('currencies_id')->references('id')->on('marx_currencies');
+            $table->index(['user_id', 'currencies_id']);
             $table->timestamps();
         });
     }

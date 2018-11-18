@@ -20,6 +20,7 @@ class CreateMarxUserRelationshipTypesTable extends Migration
             $table->foreign('user_id')->references('id')->on('marx_users');
             $table->integer('relationship_type_id')->unsigned();
             $table->foreign('relationship_type_id')->references('id')->on('marx_relationship_types');
+            $table->index(['user_id', 'relationship_type_id']);
             $table->timestamps();
         });
     }
