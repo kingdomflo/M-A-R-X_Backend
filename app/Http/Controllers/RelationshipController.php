@@ -22,14 +22,18 @@ class RelationshipController extends Controller
 
   public function getAll(Request $request)
   {
-    $list = MarxRelationship::where('user_id', '=', $request->input('token_user_id'))->with('user_relationship_type')->get();
+    $list = MarxRelationship::whereHas('user_relationship_type', function ($query) use ($request) {
+      $query->where('user_id', '=', $request->input('token_user_id'));
+    })
+      ->with('user_relationship_type')->get();
+
     return $list;
   }
 
   public function getOne(Request $request, $id)
   {
-    $relationship = MarxRelationship::where('id', '=', $id)->with('user_relationship_type')->get();
-    return $relationship;
+    $relationship = MarxRelationship::where('id', '=', $id)->with('user_relationship_type')->first();
+    return response()->json($relationship);
   }
 
   public function create(Request $request)
@@ -49,7 +53,6 @@ class RelationshipController extends Controller
     $relationship = new MarxRelationship;
     $relationship->name = $request->input('name');
     $relationship->user_relationship_type_id = $request->input('relationship_type_id');
-    $relationship->user_id = $request->input('token_user_id');
     $relationship->save();
 
     return response()->json($relationship);
@@ -87,7 +90,7 @@ class RelationshipController extends Controller
   {
     // TODO test delete cascade after
     $relationship = MarxRelationship::find($id);
-    if($relationship == null) {
+    if ($relationship == null) {
       return array(
         'error' => true,
         'message' => 'This relationship didn\'t exist'
