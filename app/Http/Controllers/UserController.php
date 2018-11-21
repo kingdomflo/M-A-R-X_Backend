@@ -65,7 +65,7 @@ class UserController extends Controller
 
     $signer = new Sha256();
     $token = (new Builder())->set('id', $user->id)->set('date', date("Y-m-d H:i:s"))->sign($signer, env('JWT_TOKEN_SIGN'))->getToken();
-    return response()->json(['Api-Token' => $token->__toString()]);
+    return response()->json(['api_token' => $token->__toString()]);
   }
 
   public function getAll()
@@ -79,7 +79,7 @@ class UserController extends Controller
     $validator = Validator::make($request->all(), [
       'name' => 'required'
     ]);
-    
+
     if ($validator->fails()) {
       return response(array(
         'error' => true,
