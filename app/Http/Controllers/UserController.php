@@ -43,11 +43,12 @@ class UserController extends Controller
       'email' => 'required',
       'name' => 'required'
     ]);
+
     if ($validator->fails()) {
-      return array(
+      return response(array(
         'error' => true,
         'message' => $validator->errors()->all()
-      );
+      ), 400);
     }
 
     $user;
@@ -78,11 +79,12 @@ class UserController extends Controller
     $validator = Validator::make($request->all(), [
       'name' => 'required'
     ]);
+    
     if ($validator->fails()) {
-      return array(
+      return response(array(
         'error' => true,
         'message' => $validator->errors()->all()
-      );
+      ), 400);
     }
 
     $user = MarxUser::find($request->input('token_user_id'));
@@ -93,7 +95,7 @@ class UserController extends Controller
 
   public function getAllRelationshipType(Request $request)
   {
-    $list = MarxUserRelationshipType::where('user_id', '=',$request->input('token_user_id'))->with('relationship_type')->get();
+    $list = MarxUserRelationshipType::where('user_id', '=', $request->input('token_user_id'))->with('relationship_type')->get();
     return $list;
   }
 
