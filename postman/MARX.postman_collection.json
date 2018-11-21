@@ -468,6 +468,23 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "refunded a payment",
+			"request": {
+				"url": "http://localhost/M-A-R-X_Backend/public/user/payment/refunded/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

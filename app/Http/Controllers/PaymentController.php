@@ -25,7 +25,7 @@ class PaymentController extends Controller
   {
     //To have security
     $this->middleware('auth', ['only' => [
-      'getAllByUser', 'getOneByUser', 'delete', 'create', 'update'
+      'getAllByUser', 'getOneByUser', 'delete', 'create', 'update', 'refunded'
     ]]);
   }
 
@@ -123,6 +123,24 @@ class PaymentController extends Controller
     if ($request->input('detail')) {
       $payment->detail = $request->input('detail');
     }
+
+    $payment->save();
+
+    return response()->json($payment);
+  }
+
+  public function refunded(Request $request, $id)
+  {
+    $payment = MarxPayment::find($id);
+    if ($payment->user_id != $request->input('token_user_id')) {
+      return array(
+        'error' => true,
+        'message' => 'this payment didn\'t belong to you'
+      );
+    }
+
+    $payment->refunded = true;
+    $payment->refunded_date = date("Y-m-d H:i:s");
 
     $payment->save();
 
