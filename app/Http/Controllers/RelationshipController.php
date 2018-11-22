@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\MarxRelationship;
 use App\Models\MarxUser;
 
+use App\Utils\Utils;
+
 class RelationshipController extends Controller
 {
 
@@ -16,7 +18,11 @@ class RelationshipController extends Controller
   {
     //To have security
     $this->middleware('auth', ['only' => [
-      'getAll', 'create', 'getOne', 'update', 'delete'
+      'getAll',
+      'create',
+      'getOne',
+      'update',
+      'delete'
     ]]);
   }
 
@@ -32,7 +38,9 @@ class RelationshipController extends Controller
 
   public function getOne(Request $request, $id)
   {
-    $relationship = MarxRelationship::where('id', '=', $id)->with('user_relationship_type')->first();
+    $relationship = MarxRelationship::where('id', '=', $id)
+      ->with('user_relationship_type')
+      ->first();
     return response()->json($relationship);
   }
 
@@ -44,10 +52,7 @@ class RelationshipController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      );
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $relationship = new MarxRelationship;
@@ -66,18 +71,16 @@ class RelationshipController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      );
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $relationship = MarxRelationship::find($id);
     if ($relationship->user_id != $request->input('token_user_id')) {
-      return array(
-        'error' => true,
-        'message' => 'this relation didn\'t belong to you'
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => 'this relation didn\'t belong to you'
+      // );
+      return Utils::errorResponse(['This relation didn\'t belong to you']);
     }
     $relationship->name = $request->input('name');
     $relationship->user_relationship_type_id = $request->input('relationship_type_id');
@@ -91,16 +94,18 @@ class RelationshipController extends Controller
     // TODO test delete cascade after
     $relationship = MarxRelationship::find($id);
     if ($relationship == null) {
-      return array(
-        'error' => true,
-        'message' => 'This relationship didn\'t exist'
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => 'This relationship didn\'t exist'
+      // );
+      return Utils::errorResponse(['This relationship didn\'t exist']);
     }
     if ($relationship->user_id != $request->input('token_user_id')) {
-      return array(
-        'error' => true,
-        'message' => 'this relation didn\'t belong to you'
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => 'this relation didn\'t belong to you'
+      // );
+      return Utils::errorResponse(['This relation didn\'t belong to you']);
     }
     $relationship->delete();
     return response()->json($relationship);

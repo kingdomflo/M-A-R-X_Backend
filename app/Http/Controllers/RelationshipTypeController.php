@@ -11,6 +11,8 @@ use App\Models\MarxRelationshipType;
 use App\Models\MarxUserRelationshipType;
 use App\Models\MarxUser;
 
+use App\Utils\Utils;
+
 class RelationshipTypeController extends Controller
 {
 
@@ -28,7 +30,6 @@ class RelationshipTypeController extends Controller
     return $list;
   }
 
-
   public function create(Request $request)
   {
     $validator = Validator::make($request->all(), [
@@ -36,17 +37,14 @@ class RelationshipTypeController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      );
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $relationship = new MarxRelationshiptype;
     $relationship->name = $request->input('name');
     $relationship->save();
 
-    return array($relationship);
+    return response()->json($relationship);
   }
 
 }

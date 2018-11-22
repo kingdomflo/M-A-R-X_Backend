@@ -12,6 +12,8 @@ use App\Models\MarxUserRelationshipType;
 use App\Models\MarxUser;
 use App\Models\MarxCurrencies;
 
+use App\Utils\Utils;
+
 class CurrenciesController extends Controller
 {
 

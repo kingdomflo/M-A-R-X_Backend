@@ -17,6 +17,8 @@ use App\Models\MarxUserRelationshipType;
 use App\Models\MarxCurrencies;
 use App\Models\MarxUserCurrencies;
 
+use App\Utils\Utils;
+
 class UserController extends Controller
 {
 
@@ -36,6 +38,7 @@ class UserController extends Controller
     ]]);
   }
 
+  // TODO verify that he come from my auth0 account!
   public function login(Request $request)
   {
     $validator = Validator::make($request->all(), [
@@ -45,14 +48,15 @@ class UserController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return response(array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      ), 400);
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $user;
-    $userLink = MarxUser::where('auth0_id', '=', $request->input('user_id'))->where('email', '=', $request->input('email'))->take(1)->get();
+    $userLink = MarxUser::where('auth0_id', '=', $request->input('user_id'))
+      ->where('email', '=', $request->input('email'))
+      ->take(1)
+      ->get();
+
     if (count($userLink) == 0) {
       $user = new MarxUser;
       $user->auth0_id = $request->input('user_id');
@@ -64,7 +68,12 @@ class UserController extends Controller
     }
 
     $signer = new Sha256();
-    $token = (new Builder())->set('id', $user->id)->set('date', date("Y-m-d H:i:s"))->sign($signer, env('JWT_TOKEN_SIGN'))->getToken();
+    $token = (new Builder())
+      ->set('id', $user->id)
+      ->set('date', date("Y-m-d H:i:s"))
+      ->sign($signer, env('JWT_TOKEN_SIGN'))
+      ->getToken();
+
     return response()->json(['api_token' => $token->__toString()]);
   }
 
@@ -81,10 +90,7 @@ class UserController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return response(array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      ), 400);
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $user = MarxUser::find($request->input('token_user_id'));
@@ -106,10 +112,7 @@ class UserController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      );
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $relationshipTypeLink = MarxRelationshipType::where('name', '=', $request->input('name'))->take(1)->get();
@@ -117,10 +120,11 @@ class UserController extends Controller
       $relationshipType = $relationshipTypeLink[0];
       $verifyPresent = MarxUserRelationshipType::where('user_id', '=', $request->input('token_user_id'))->where('relationship_type_id', '=', $relationshipType->id)->take(1)->get();
       if (count($verifyPresent) > 0) {
-        return array(
-          'error' => true,
-          'message' => ['relationship type already present']
-        );
+        // return array(
+        //   'error' => true,
+        //   'message' => ['relationship type already present']
+        // );
+        return Utils::errorResponse(['relationship type already present']);
       }
     } else {
       $relationshipType = new MarxRelationshiptype;
@@ -140,10 +144,11 @@ class UserController extends Controller
   {
     $relationshipType = MarxUserRelationshipType::find($id);
     if ($relationshipType == null) {
-      return array(
-        'error' => true,
-        'message' => ['relationship type not linked to this user']
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => ['relationship type not linked to this user']
+      // );
+      return Utils::errorResponse(['relationship type not linked to this user']);
     }
     $relationshipType->delete();
     return response()->json($relationshipType);
@@ -163,10 +168,7 @@ class UserController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      );
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $currencyLink = MarxCurrencies::where('name', '=', $request->input('name'))->where('label', '=', $request->input('label'))->take(1)->get();
@@ -174,10 +176,11 @@ class UserController extends Controller
       $currency = $currencyLink[0];
       $verifyPresent = MarxUserCurrencies::where('user_id', '=', $request->input('token_user_id'))->where('currencies_id', '=', $currency->id)->take(1)->get();
       if (count($verifyPresent) > 0) {
-        return array(
-          'error' => true,
-          'message' => ['currency already present']
-        );
+        // return array(
+        //   'error' => true,
+        //   'message' => ['currency already present']
+        // );
+        return Utils::errorResponse(['Currency already present']);
       }
     } else {
       $currency = new MarxCurrencies;
@@ -198,10 +201,11 @@ class UserController extends Controller
   {
     $currency = MarxUserCurrencies::find($id);
     if ($currency == null) {
-      return array(
-        'error' => true,
-        'message' => ['currency not linked to this user']
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => ['currency not linked to this user']
+      // );
+      return Utils::errorResponse(['Currency not linked to this user']);
     }
     $currency->delete();
     return response()->json($currency);

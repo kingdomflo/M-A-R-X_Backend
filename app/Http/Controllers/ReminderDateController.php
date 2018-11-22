@@ -19,6 +19,8 @@ use App\Models\MarxUserCurrencies;
 use App\Models\MarxPayment;
 use App\Models\MarxReminderDate;
 
+use App\Utils\Utils;
+
 class ReminderDateController extends Controller
 {
 
@@ -49,16 +51,18 @@ class ReminderDateController extends Controller
     // TODO test delete cascade after
     $reminderDate = MarxReminderDate::with('payment')->find($id);
     if ($reminderDate == null) {
-      return array(
-        'error' => true,
-        'message' => 'This reminder date didn\'t exist'
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => 'This reminder date didn\'t exist'
+      // );
+      return Utils::errorResponse(['This reminder date didn\'t exist']);
     }
     if ($reminderDate->payment->user_id != $request->input('token_user_id')) {
-      return array(
-        'error' => true,
-        'message' => 'this reminder date didn\'t belong to you',
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => 'this reminder date didn\'t belong to you',
+      // );
+      return Utils::errorResponse(['This reminder date didn\'t belong to you']);
     }
     $reminderDate->delete();
     return $reminderDate;
@@ -72,10 +76,7 @@ class ReminderDateController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      );
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $reminderDate = new MarxReminderDate;

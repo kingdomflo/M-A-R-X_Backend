@@ -18,6 +18,8 @@ use App\Models\MarxCurrencies;
 use App\Models\MarxUserCurrencies;
 use App\Models\MarxPayment;
 
+use App\Utils\Utils;
+
 class PaymentController extends Controller
 {
 
@@ -25,7 +27,12 @@ class PaymentController extends Controller
   {
     //To have security
     $this->middleware('auth', ['only' => [
-      'getAllByUser', 'getOneByUser', 'delete', 'create', 'update', 'refunded'
+      'getAllByUser',
+      'getOneByUser',
+      'delete',
+      'create',
+      'update',
+      'refunded'
     ]]);
   }
 
@@ -66,10 +73,7 @@ class PaymentController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      );
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $payment = new MarxPayment;
@@ -100,18 +104,17 @@ class PaymentController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return array(
-        'error' => true,
-        'message' => $validator->errors()->all()
-      );
+      return Utils::errorResponse($validator->errors()->all());
     }
 
     $payment = MarxPayment::find($id);
     if ($payment->user_id != $request->input('token_user_id')) {
-      return array(
-        'error' => true,
-        'message' => 'this payment didn\'t belong to you'
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => 'this payment didn\'t belong to you'
+      // );
+      return Utils::errorResponse(['This payment didn\'t belong to you']);
+
     }
 
     $payment->title = $request->input('title');
@@ -133,10 +136,11 @@ class PaymentController extends Controller
   {
     $payment = MarxPayment::find($id);
     if ($payment->user_id != $request->input('token_user_id')) {
-      return array(
-        'error' => true,
-        'message' => 'this payment didn\'t belong to you'
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => 'this payment didn\'t belong to you'
+      // );
+      return Utils::errorResponse(['This payment didn\'t belong to you']);
     }
 
     $payment->refunded = true;
@@ -152,19 +156,21 @@ class PaymentController extends Controller
     // TODO test delete cascade after
     $payment = MarxPayment::find($id);
     if ($payment == null) {
-      return array(
-        'error' => true,
-        'message' => 'This payment didn\'t exist'
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => 'This payment didn\'t exist'
+      // );
+      return Utils::errorResponse(['This payment didn\'t exist']);
     }
     if ($payment->user_id != $request->input('token_user_id')) {
-      return array(
-        'error' => true,
-        'message' => 'this payment didn\'t belong to you',
-      );
+      // return array(
+      //   'error' => true,
+      //   'message' => 'this payment didn\'t belong to you',
+      // );
+      return Utils::errorResponse(['This payment didn\'t belong to you']);
     }
     $payment->delete();
-    return $payment;
+    return response()->json($payment);
   }
 
 }
