@@ -18,4 +18,20 @@ class Utils
         ), 400);
     }
 
+    static public function errorResponseNotFound($item)
+    {
+        return response(array(
+            'error' => true,
+            'message' => ['The ' . $item . ' you\'re searching didn\'t exist']
+        ), 404);
+    }
+
+    static public function errorResponseNotBelongToYou($item)
+    {
+        return response(array(
+            'error' => true,
+            'message' => ['The ' . $item . ' didn\'t belong to you']
+        ), 409);
+    }
+
 }

@@ -143,14 +143,13 @@ class UserController extends Controller
   public function deleteRelationshipType(Request $request, $id)
   {
     $relationshipType = MarxUserRelationshipType::find($id);
+
     if ($relationshipType == null) {
-      // return array(
-      //   'error' => true,
-      //   'message' => ['relationship type not linked to this user']
-      // );
-      return Utils::errorResponse(['relationship type not linked to this user']);
+      return Utils::errorResponseNotFound('relationship type');
     }
+
     $relationshipType->delete();
+
     return response()->json($relationshipType);
   }
 
@@ -176,10 +175,6 @@ class UserController extends Controller
       $currency = $currencyLink[0];
       $verifyPresent = MarxUserCurrencies::where('user_id', '=', $request->input('token_user_id'))->where('currencies_id', '=', $currency->id)->take(1)->get();
       if (count($verifyPresent) > 0) {
-        // return array(
-        //   'error' => true,
-        //   'message' => ['currency already present']
-        // );
         return Utils::errorResponse(['Currency already present']);
       }
     } else {
@@ -201,11 +196,7 @@ class UserController extends Controller
   {
     $currency = MarxUserCurrencies::find($id);
     if ($currency == null) {
-      // return array(
-      //   'error' => true,
-      //   'message' => ['currency not linked to this user']
-      // );
-      return Utils::errorResponse(['Currency not linked to this user']);
+      return Utils::errorResponseNotFound('currency');
     }
     $currency->delete();
     return response()->json($currency);

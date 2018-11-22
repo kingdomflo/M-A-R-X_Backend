@@ -51,18 +51,10 @@ class ReminderDateController extends Controller
     // TODO test delete cascade after
     $reminderDate = MarxReminderDate::with('payment')->find($id);
     if ($reminderDate == null) {
-      // return array(
-      //   'error' => true,
-      //   'message' => 'This reminder date didn\'t exist'
-      // );
-      return Utils::errorResponse(['This reminder date didn\'t exist']);
+      return Utils::errorResponseNotFound('reminder date');
     }
     if ($reminderDate->payment->user_id != $request->input('token_user_id')) {
-      // return array(
-      //   'error' => true,
-      //   'message' => 'this reminder date didn\'t belong to you',
-      // );
-      return Utils::errorResponse(['This reminder date didn\'t belong to you']);
+      return Utils::errorResponseNotBelongToYou('reminder date');
     }
     $reminderDate->delete();
     return $reminderDate;

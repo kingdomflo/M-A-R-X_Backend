@@ -41,6 +41,11 @@ class RelationshipController extends Controller
     $relationship = MarxRelationship::where('id', '=', $id)
       ->with('user_relationship_type')
       ->first();
+
+    if ($relationship == null) {
+      return Utils::errorResponseNotFound('relationship');
+    }
+
     return response()->json($relationship);
   }
 
@@ -75,13 +80,15 @@ class RelationshipController extends Controller
     }
 
     $relationship = MarxRelationship::find($id);
-    if ($relationship->user_id != $request->input('token_user_id')) {
-      // return array(
-      //   'error' => true,
-      //   'message' => 'this relation didn\'t belong to you'
-      // );
-      return Utils::errorResponse(['This relation didn\'t belong to you']);
+
+    if ($relationship == null) {
+      return Utils::errorResponseNotFound('relationship');
     }
+
+    if ($relationship->user_id != $request->input('token_user_id')) {
+      return Utils::errorResponseNotBelongToYou('relationship');
+    }
+
     $relationship->name = $request->input('name');
     $relationship->user_relationship_type_id = $request->input('relationship_type_id');
     $relationship->save();
@@ -93,20 +100,15 @@ class RelationshipController extends Controller
   {
     // TODO test delete cascade after
     $relationship = MarxRelationship::find($id);
+
     if ($relationship == null) {
-      // return array(
-      //   'error' => true,
-      //   'message' => 'This relationship didn\'t exist'
-      // );
-      return Utils::errorResponse(['This relationship didn\'t exist']);
+      return Utils::errorResponseNotFound('relationship');
     }
+
     if ($relationship->user_id != $request->input('token_user_id')) {
-      // return array(
-      //   'error' => true,
-      //   'message' => 'this relation didn\'t belong to you'
-      // );
-      return Utils::errorResponse(['This relation didn\'t belong to you']);
+      return Utils::errorResponseNotBelongToYou('relationship');
     }
+    
     $relationship->delete();
     return response()->json($relationship);
   }
