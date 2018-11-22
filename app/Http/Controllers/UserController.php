@@ -120,10 +120,6 @@ class UserController extends Controller
       $relationshipType = $relationshipTypeLink[0];
       $verifyPresent = MarxUserRelationshipType::where('user_id', '=', $request->input('token_user_id'))->where('relationship_type_id', '=', $relationshipType->id)->take(1)->get();
       if (count($verifyPresent) > 0) {
-        // return array(
-        //   'error' => true,
-        //   'message' => ['relationship type already present']
-        // );
         return Utils::errorResponse(['relationship type already present']);
       }
     } else {
