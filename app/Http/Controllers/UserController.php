@@ -36,6 +36,9 @@ class UserController extends Controller
       'addCurrencies',
       'deleteCurrencies'
     ]]);
+    $this->middleware('auth0', ['only' => [
+      'login'
+    ]]);
   }
 
   // TODO verify that he come from my auth0 account!
