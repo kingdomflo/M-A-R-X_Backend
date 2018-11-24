@@ -27,6 +27,11 @@ class RelationshipTypeController extends Controller
   public function getAll(Request $request)
   {
     $list = MarxRelationshipType::all();
+    if ($request->input('name') != null) {
+      $list = MarxRelationshipType::where('name', 'like', '%' . $request->input('name') . '%')->get();
+    } else {
+      $list = MarxRelationshipType::all();
+    }
     return $list;
   }
 
