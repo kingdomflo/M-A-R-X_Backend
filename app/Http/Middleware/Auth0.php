@@ -44,10 +44,18 @@ class Auth0
             $signer = new Sha256();
             $token = (new Parser())->parse((string)$header);
             if ($token->verify($signer, env('JWT_TOKEN_SIGN'))) {
+
+                if ($token->getClaim('user_id') != $request->input('user_id') ||
+                    $token->getClaim('name') != $request->input('name') ||
+                    $token->getClaim('email') != $request->input('email')) {
+                    return response(array(
+                        'error' => true,
+                        'message' => ['The json and the token dont match']
+                    ), 401);
+                }
+
                 return $next($request);
             } else {
-                var_dump('coucou not ok');
-
                 return response(array(
                     'error' => true,
                     'message' => ['You are not comming from the right Auth0 service']
