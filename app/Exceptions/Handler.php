@@ -51,10 +51,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if (env('APP_DEBUG')) {
-            return parent::render($request, $e);
-        }
-        
+        // var_dump($e->getPrevious()->errorInfo[1]);
+        // var_dump($e instanceof QueryException);
+
+        // if (env('APP_DEBUG')) {
+
+        //     return parent::render($request, $e);
+        // }
+
         if ($e instanceof HttpResponseException) {
             $status = Response::HTTP_INTERNAL_SERVER_ERROR;
             $e = $e->getMessage();
@@ -75,8 +79,10 @@ class Handler extends ExceptionHandler
             //$e = $e->getMessage();
             //$e = $e->getPrevious()->getMessage();
             //$e = $e->getPrevious()->errorInfo[1];
-            if ($e = $e->getPrevious()->errorInfo[1] == 1062) {
+            if ($e->getPrevious()->errorInfo[1] == 1062) {
                 $e = "This entry already exist";
+            } else if ($e->getPrevious()->errorInfo[1] == 1451) {
+                $e = "You can't delete this item because it's belong to other items";
             } else {
                 $e = "There is an error with the database";
             }
