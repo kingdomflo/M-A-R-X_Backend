@@ -13,7 +13,7 @@ class MarxPayment extends Model
   }
 
   public function user_currency() {
-    return $this->hasOne('App\Models\MarxUserCurrencies', 'id', 'relationship_id')->with('currency');
+    return $this->hasOne('App\Models\MarxUserCurrencies', 'id', 'user_currencies_id')->with('currency');
   }
 
 }
