@@ -42,8 +42,22 @@ class PaymentController extends Controller
     if ($request->input('type') != null) {
       $whereArray[] = (['type', '=', $request->input('type')]);
     }
+    if ($request->input('relationship_id') != null) {
+      $whereArray[] = (['relationship_id', '=', $request->input('relationship_id')]);
+    }
+    if ($request->input('refunded') != null) {
+      $refundBool;
+      if ($request->input('refunded') == 'false') {
+        $refundBool = 0;
+      } else {
+        $refundBool = 1;
+      }
+      $whereArray[] = (['refunded', '=', $refundBool]);
+    }
 
     $list = MarxPayment::where($whereArray)
+      ->orderBy('date', 'ASC')
+      ->take($request->input('number_row'))
       ->with('relationship')
       ->with('user_currency')
       ->get();
@@ -164,7 +178,7 @@ class PaymentController extends Controller
     if ($payment->user_id != $request->input('token_user_id')) {
       return Utils::errorResponseNotBelongToYou('payment');
     }
-    
+
     $payment->delete();
     return response()->json($payment);
   }
