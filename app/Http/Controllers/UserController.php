@@ -18,6 +18,7 @@ use App\Models\MarxCurrencies;
 use App\Models\MarxUserCurrencies;
 
 use App\Utils\Utils;
+use App\Models\Entity\UserRelationshipType;
 
 class UserController extends Controller
 {
@@ -105,6 +106,7 @@ class UserController extends Controller
   public function getAllRelationshipType(Request $request)
   {
     $list = MarxUserRelationshipType::where('user_id', '=', $request->input('token_user_id'))->with('relationship_type')->get();
+    //return UserRelationshipType::map_array($list);
     return $list;
   }
 
