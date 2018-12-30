@@ -10,6 +10,9 @@ use App\Models\MarxRelationship;
 use App\Models\MarxUser;
 
 use App\Utils\Utils;
+use App\Jobs\RelationshipMapper;
+
+use App\Models\Entity\Relationship;
 
 class RelationshipController extends Controller
 {
@@ -33,7 +36,8 @@ class RelationshipController extends Controller
     })
       ->with('user_relationship_type')->get();
 
-    return $list;
+    return Relationship::map_array($list);
+    //return $list;
   }
 
   public function getOne(Request $request, $id)
@@ -45,8 +49,8 @@ class RelationshipController extends Controller
     if ($relationship == null) {
       return Utils::errorResponseNotFound('relationship');
     }
-
-    return response()->json($relationship);
+    return response()->json(Relationship::map_single($relationship));
+    //return response()->json($relationship);
   }
 
   public function create(Request $request)
@@ -108,7 +112,7 @@ class RelationshipController extends Controller
     if ($relationship->user_id != $request->input('token_user_id')) {
       return Utils::errorResponseNotBelongToYou('relationship');
     }
-    
+
     $relationship->delete();
     return response()->json($relationship);
   }
