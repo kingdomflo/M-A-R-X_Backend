@@ -62,7 +62,6 @@ class UserController extends Controller
     if (count($userLink) == 0) {
       $user = new MarxUser;
       $user->auth0_id = $request->input('user_id');
-      $user->email = $request->input('email');
       $user->name = $request->input('name');
       $user->save();
     } else {
