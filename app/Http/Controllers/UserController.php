@@ -46,7 +46,6 @@ class UserController extends Controller
   {
     $validator = Validator::make($request->all(), [
       'user_id' => 'required',
-      'email' => 'required',
       'name' => 'required'
     ]);
 
@@ -56,7 +55,6 @@ class UserController extends Controller
 
     $user;
     $userLink = MarxUser::where('auth0_id', '=', $request->input('user_id'))
-      ->where('email', '=', $request->input('email'))
       ->take(1)
       ->get();
 
