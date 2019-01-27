@@ -46,8 +46,7 @@ class Auth0
             if ($token->verify($signer, env('JWT_TOKEN_SIGN'))) {
 
                 if ($token->getClaim('user_id') != $request->input('user_id') ||
-                    $token->getClaim('name') != $request->input('name') ||
-                    $token->getClaim('email') != $request->input('email')) {
+                    $token->getClaim('name') != $request->input('name')) {
                     return response(array(
                         'error' => true,
                         'message' => ['The json and the token dont match']
