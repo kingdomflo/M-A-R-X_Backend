@@ -89,7 +89,7 @@ class RelationshipController extends Controller
       return Utils::errorResponseNotFound('relationship');
     }
 
-    if ($relationship->user_id != $request->input('token_user_id')) {
+    if ($relationship->user_relationship_type->user_id != $request->input('token_user_id')) {
       return Utils::errorResponseNotBelongToYou('relationship');
     }
 
