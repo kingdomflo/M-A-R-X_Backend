@@ -71,6 +71,7 @@ class PaymentController extends Controller
       ->where('user_id', '=', $request->input('token_user_id'))
       ->with('relationship')
       ->with('user_currency')
+      ->with('reminder_date')
       ->first();
 
     if ($payment == null) {
