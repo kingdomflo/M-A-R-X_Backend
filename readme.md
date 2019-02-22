@@ -3,7 +3,6 @@
 The API for the mobile application Money And Relationship eXperience
 Just an app to manage to who I owe money and who owe me money
 
-Nothing interesting for the moment, it's a personal and school project that I do for the fun (and for the school...)
 
 Lumen - Eloquent command:
 
@@ -11,7 +10,6 @@ Create the data base: php artisan migrate
 
 Seed the data base: php artisan db:seed
 
-More details will come later
 
 ## Lumen PHP Framework Information
 
