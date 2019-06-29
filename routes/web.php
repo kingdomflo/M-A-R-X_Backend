@@ -17,28 +17,28 @@ $router->get('/', function () use ($router) {
 
 $router->post('login', 'UserController@login');
 
-$router->get('user/relationship', 'RelationshipController@getAll');
-$router->post('user/relationship', 'RelationshipController@create');
-$router->get('user/relationship/{id}', 'RelationshipController@getOne');
-$router->put('user/relationship/{id}', 'RelationshipController@update');
-$router->delete('user/relationship/{id}', 'RelationshipController@delete');
+$router->get('relationship', 'RelationshipController@getAll');
+$router->post('relationship', 'RelationshipController@create');
+$router->get('relationship/{id}', 'RelationshipController@getOne');
+$router->put('relationship/{id}', 'RelationshipController@update');
+$router->delete('relationship/{id}', 'RelationshipController@delete');
 
 $router->get('relationshipType', 'RelationshipTypeController@getAll');
 //$router->post('relationshipType', 'RelationshipTypeController@create');
 
 $router->put('user', 'UserController@updateName');
-$router->get('user/relationshipType', 'UserController@getAllRelationshipType');
-$router->post('user/relationshipType', 'UserController@addRelationshipType');
-$router->delete('user/relationshipType/{id}', 'UserController@deleteRelationshipType');
+$router->get('relationshipType', 'UserController@getAllRelationshipType');
+$router->post('relationshipType', 'UserController@addRelationshipType');
+$router->delete('relationshipType/{id}', 'UserController@deleteRelationshipType');
 
-$router->get('user/payment', 'PaymentController@getAllByUser');
-$router->get('user/payment/{id}', 'PaymentController@getOneByUser');
-$router->post('user/payment', 'PaymentController@create');
-$router->put('user/payment/{id}', 'PaymentController@update');
-$router->delete('user/payment/{id}', 'PaymentController@delete');
-$router->put('user/payment/refunded/{id}', 'PaymentController@refunded');
+$router->get('payment', 'PaymentController@getAllByUser');
+$router->get('payment/{id}', 'PaymentController@getOneByUser');
+$router->post('payment', 'PaymentController@create');
+$router->put('payment/{id}', 'PaymentController@update');
+$router->delete('payment/{id}', 'PaymentController@delete');
+$router->put('payment/refunded/{id}', 'PaymentController@refunded');
 
-$router->get('user/reminderdate', 'ReminderDateController@getAllByUser');
-$router->post('user/reminderdate', 'ReminderDateController@create');
-$router->delete('user/reminderdate/{id}', 'ReminderDateController@delete');
+$router->get('reminderdate', 'ReminderDateController@getAllByUser');
+$router->post('reminderdate', 'ReminderDateController@create');
+$router->delete('reminderdate/{id}', 'ReminderDateController@delete');
 
