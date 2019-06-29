@@ -30,9 +30,6 @@ $router->put('user', 'UserController@updateName');
 $router->get('user/relationshipType', 'UserController@getAllRelationshipType');
 $router->post('user/relationshipType', 'UserController@addRelationshipType');
 $router->delete('user/relationshipType/{id}', 'UserController@deleteRelationshipType');
-$router->get('user/currencies', 'UserController@getAllCurrencies');
-$router->post('user/currencies', 'UserController@addCurrencies');
-$router->delete('user/currencies/{id}', 'UserController@deleteCurrencies');
 
 $router->get('user/payment', 'PaymentController@getAllByUser');
 $router->get('user/payment/{id}', 'PaymentController@getOneByUser');
@@ -44,6 +41,4 @@ $router->put('user/payment/refunded/{id}', 'PaymentController@refunded');
 $router->get('user/reminderdate', 'ReminderDateController@getAllByUser');
 $router->post('user/reminderdate', 'ReminderDateController@create');
 $router->delete('user/reminderdate/{id}', 'ReminderDateController@delete');
-
-$router->get('currencies', 'CurrenciesController@getAll');
 
