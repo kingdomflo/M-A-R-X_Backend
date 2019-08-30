@@ -45,16 +45,16 @@ class RelationshipController extends Controller
 
   public function getAllRelationship(Request $request)
   {
-    return MarxRelationship::whereHas('user_relationship_type', function ($query) use ($request) {
-      $query->where('user_id', '=', $request->input('token_user_id'));
-    })->with('user_relationship_type')->get();
+    return MarxRelationship::whereHas('userRelationshipType', function ($query) use ($request) {
+      $query->where('userId', '=', $request->input('tokenUserId'));
+    })->with('userRelationshipType')->get();
   }
 
   public function createRelationship(Request $request)
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required',
-      'relationship_type_id' => 'required',
+      'relationshipTypeId' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -63,7 +63,7 @@ class RelationshipController extends Controller
 
     $relationship = new MarxRelationship;
     $relationship->name = $request->input('name');
-    $relationship->user_relationship_type_id = $request->input('relationship_type_id');
+    $relationship->user_relationship_type_id = $request->input('relationshipTypeId');
     $relationship->save();
 
     return response()->json($relationship);
@@ -72,7 +72,7 @@ class RelationshipController extends Controller
   public function getOneRelationship(Request $request, $id)
   {
     $relationship = MarxRelationship::where('id', '=', $id)
-      ->with('user_relationship_type')
+      ->with('userRelationshipType')
       ->first();
 
     if ($relationship == null) {

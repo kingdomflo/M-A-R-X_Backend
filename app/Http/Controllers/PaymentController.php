@@ -48,12 +48,12 @@ class PaymentController extends Controller
 
   public function getAllPayment(Request $request)
   {
-    $whereArray = array(['user_id', '=', $request->input('token_user_id')]);
+    $whereArray = array(['userId', '=', $request->input('tokenUserId')]);
     if ($request->input('type') != null) {
       $whereArray[] = (['type', '=', $request->input('type')]);
     }
-    if ($request->input('relationship_id') != null) {
-      $whereArray[] = (['relationship_id', '=', $request->input('relationship_id')]);
+    if ($request->input('relationshipId') != null) {
+      $whereArray[] = (['relationshipId', '=', $request->input('relationshipId')]);
     }
     if ($request->input('refunded') != null) {
       $refundBool;
@@ -69,7 +69,6 @@ class PaymentController extends Controller
       ->orderBy('date', 'ASC')
       ->take($request->input('number_row'))
       ->with('relationship')
-      ->with('user_currency')
       ->get();
 
     return $list;
@@ -78,10 +77,9 @@ class PaymentController extends Controller
   public function getOnePayment(Request $request, $id)
   {
     $payment = MarxPayment::where('id', '=', $id)
-      ->where('user_id', '=', $request->input('token_user_id'))
+      ->where('userId', '=', $request->input('tokenUserId'))
       ->with('relationship')
-      ->with('user_currency')
-      ->with('reminder_date')
+      ->with('reminderDate')
       ->first();
 
     if ($payment == null) {
@@ -106,6 +104,7 @@ class PaymentController extends Controller
       return Utils::errorResponse($validator->errors()->all());
     }
 
+    // TODO with real object
     $payment = new MarxPayment;
     $payment->title = $request->input('title');
     $payment->relationship_id = $request->input('relationship_id');
@@ -131,7 +130,7 @@ class PaymentController extends Controller
       return Utils::errorResponseNotFound('payment');
     }
 
-    if ($payment->user_id != $request->input('token_user_id')) {
+    if ($payment->user_id != $request->input('tokenUserId')) {
       return Utils::errorResponseNotBelongToYou('payment');
     }
 

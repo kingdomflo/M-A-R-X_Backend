@@ -45,7 +45,7 @@ class Auth0
             $token = (new Parser())->parse((string)$header);
             if ($token->verify($signer, env('JWT_TOKEN_SIGN'))) {
 
-                if ($token->getClaim('user_id') != $request->input('user_id') ||
+                if ($token->getClaim('userId') != $request->input('userId') ||
                     $token->getClaim('name') != $request->input('name')) {
                     return response(array(
                         'error' => true,

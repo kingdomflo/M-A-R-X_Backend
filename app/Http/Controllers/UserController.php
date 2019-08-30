@@ -47,7 +47,7 @@ class UserController extends Controller
   public function login(Request $request)
   {
     $validator = Validator::make($request->all(), [
-      'user_id' => 'required',
+      'userId' => 'required',
       'name' => 'required'
     ]);
 
@@ -56,13 +56,13 @@ class UserController extends Controller
     }
 
     $user;
-    $userLink = MarxUser::where('auth0_id', '=', $request->input('user_id'))
+    $userLink = MarxUser::where('auth0Id', '=', $request->input('userId'))
       ->take(1)
       ->get();
 
     if (count($userLink) == 0) {
       $user = new MarxUser;
-      $user->auth0_id = $request->input('user_id');
+      $user->auth0_id = $request->input('userId');
       $user->name = $request->input('name');
       $user->save();
     } else {
@@ -86,7 +86,7 @@ class UserController extends Controller
 
 
 
-  
+
 
   public function getAll()
   {

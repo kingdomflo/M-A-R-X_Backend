@@ -13,8 +13,8 @@ class CreateMarxReminderDateTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('marx_reminder_dates');
-        Schema::create('marx_reminder_dates', function (Blueprint $table) {
+        Schema::dropIfExists('marx_reminderDates');
+        Schema::create('marx_reminderDates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('paymentId')->unsigned();
             $table->foreign('paymentId')->references('id')->on('marx_payments');
@@ -30,6 +30,6 @@ class CreateMarxReminderDateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marx_reminder_dates');
+        Schema::dropIfExists('marx_reminderDates');
     }
 }

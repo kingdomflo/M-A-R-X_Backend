@@ -13,13 +13,13 @@ class CreateMarxUserRelationshipTypesTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('marx_user_relationship_types');
-        Schema::create('marx_user_relationship_types', function (Blueprint $table) {
+        Schema::dropIfExists('marx_userRelationshipTypes');
+        Schema::create('marx_userRelationshipTypes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userId')->unsigned();
             $table->foreign('userId')->references('id')->on('marx_users');
             $table->integer('relationshipTypeId')->unsigned();
-            $table->foreign('relationshipTypeId')->references('id')->on('marx_relationship_types');
+            $table->foreign('relationshipTypeId')->references('id')->on('marx_relationshipTypes');
             $table->index(['userId', 'relationshipTypeId']);
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateMarxUserRelationshipTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marx_user_relationship_types');
+        Schema::dropIfExists('marx_userRelationshipTypes');
     }
 }

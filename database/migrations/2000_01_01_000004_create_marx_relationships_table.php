@@ -18,7 +18,7 @@ class CreateMarxRelationshipsTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->integer('userRelationshipTypeId')->unsigned();
-            $table->foreign('userRelationshipTypeId')->references('id')->on('marx_user_relationship_types');
+            $table->foreign('userRelationshipTypeId')->references('id')->on('marx_userRelationshipTypes');
             $table->index(['name', 'userRelationshipTypeId']);
             $table->timestamps();
         });

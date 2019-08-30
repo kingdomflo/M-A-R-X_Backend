@@ -20,8 +20,6 @@ class CreateMarxPaymentsTable extends Migration
             $table->foreign('userId')->references('id')->on('marx_users');
             $table->integer('relationshipId')->unsigned();
             $table->foreign('relationshipId')->references('id')->on('marx_relationships');
-            $table->integer('user_currenciesId')->unsigned();
-            $table->foreign('user_currenciesId')->references('id')->on('marx_user_currencies');
             $table->string('title', 20);
             $table->string('detail', 280)->nullable();
             $table->string('currency', 10);

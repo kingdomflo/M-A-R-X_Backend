@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         $user = new MarxUser;
         $user->name = 'kingdomflo16@gmail.com';
-        $user->auth0_id = 'auth0|5b8bcdb84b3e140de3010e77';
+        $user->auth0Id = 'auth0|5b8bcdb84b3e140de3010e77';
         $user->save();
 
         $relationshipType = new MarxRelationshipType();
@@ -39,34 +39,18 @@ class DatabaseSeeder extends Seeder
         $relationshipType->save();
 
         $userRelationshipType = new MarxUserRelationshipType();
-        $userRelationshipType->user_id = 1;
-        $userRelationshipType->relationship_type_id = 2;
+        $userRelationshipType->userId = 1;
+        $userRelationshipType->relationshipTypeId = 2;
         $userRelationshipType->save();
 
         $relationship = new MarxRelationship();
         $relationship->name = "Samy";
-        $relationship->user_relationship_type_id = 1;
+        $relationship->user_relationshipTypeId = 1;
         $relationship->save();
 
-        $currency = new MarxCurrencies();
-        $currency->name = "Euro";
-        $currency->label = "eur";
-        $currency->save();
-
-        $currency = new MarxCurrencies();
-        $currency->name = "Pièce d'or";
-        $currency->label = "po";
-        $currency->save();
-
-        $userCurrency = new MarxUserCurrencies();
-        $userCurrency->user_id = 1;
-        $userCurrency->currencies_id = 1;
-        $userCurrency->save();
-
         $payment = new MarxPayment();
-        $payment->user_id = 1;
-        $payment->user_currencies_id = 1;
-        $payment->relationship_id = 1;
+        $payment->userId = 1;
+        $payment->relationshipId = 1;
         $payment->title = "Repas du midi";
         $payment->detail = "C'était vraiment bon";
         $payment->amount = 12.50;
@@ -75,9 +59,8 @@ class DatabaseSeeder extends Seeder
         $payment->save();
 
         $payment = new MarxPayment();
-        $payment->user_id = 1;
-        $payment->user_currencies_id = 1;
-        $payment->relationship_id = 1;
+        $payment->userId = 1;
+        $payment->relationshipId = 1;
         $payment->title = "Livre";
         $payment->amount = 9;
         $payment->date = date('Y-m-d');
@@ -85,7 +68,7 @@ class DatabaseSeeder extends Seeder
         $payment->save();
 
         $reminderDate = new MarxReminderDate();
-        $reminderDate->payment_id = 1;
+        $reminderDate->paymentId = 1;
         $reminderDate->date = '2018-12-24';
         $reminderDate->save();
 
