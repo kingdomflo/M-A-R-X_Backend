@@ -16,11 +16,11 @@ class CreateMarxUserRelationshipTypesTable extends Migration
         Schema::dropIfExists('marx_user_relationship_types');
         Schema::create('marx_user_relationship_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('marx_users');
-            $table->integer('relationship_type_id')->unsigned();
-            $table->foreign('relationship_type_id')->references('id')->on('marx_relationship_types');
-            $table->index(['user_id', 'relationship_type_id']);
+            $table->integer('userId')->unsigned();
+            $table->foreign('userId')->references('id')->on('marx_users');
+            $table->integer('relationshipTypeId')->unsigned();
+            $table->foreign('relationshipTypeId')->references('id')->on('marx_relationship_types');
+            $table->index(['userId', 'relationshipTypeId']);
             $table->timestamps();
         });
     }

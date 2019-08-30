@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMarxCurrenciesTable extends Migration
+class CreateMarxReminderDateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateMarxCurrenciesTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('marx_currencies');
-        Schema::create('marx_currencies', function (Blueprint $table) {
+        Schema::dropIfExists('marx_reminder_dates');
+        Schema::create('marx_reminder_dates', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);
-            $table->string('label', 3);
+            $table->integer('paymentId')->unsigned();
+            $table->foreign('paymentId')->references('id')->on('marx_payments');
+            $table->date('date');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateMarxCurrenciesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marx_currencies');
+        Schema::dropIfExists('marx_reminder_dates');
     }
 }
