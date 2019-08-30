@@ -13,6 +13,7 @@ use App\Utils\Utils;
 use App\Jobs\RelationshipMapper;
 
 use App\Models\Entity\Relationship;
+use App\Models\MarxRelationshipType;
 
 class RelationshipController extends Controller
 {
@@ -25,9 +26,70 @@ class RelationshipController extends Controller
       'create',
       'getOne',
       'update',
-      'delete'
+      'delete',
+
+      'getAllRelationshipType',
+      'getAllRelationship',
+      'createRelationship',
+      'getOneRelationship'
     ]]);
   }
+
+  // rework the route and method
+  // TODO rework with model
+
+  public function getAllRelationshipType(Request $request)
+  {
+    return MarxRelationshipType::all();
+  }
+
+  public function getAllRelationship(Request $request)
+  {
+    return MarxRelationship::whereHas('user_relationship_type', function ($query) use ($request) {
+      $query->where('user_id', '=', $request->input('token_user_id'));
+    })->with('user_relationship_type')->get();
+  }
+
+  public function createRelationship(Request $request)
+  {
+    $validator = Validator::make($request->all(), [
+      'name' => 'required',
+      'relationship_type_id' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+      return Utils::errorResponse($validator->errors()->all());
+    }
+
+    $relationship = new MarxRelationship;
+    $relationship->name = $request->input('name');
+    $relationship->user_relationship_type_id = $request->input('relationship_type_id');
+    $relationship->save();
+
+    return response()->json($relationship);
+  }
+
+  public function getOneRelationship(Request $request, $id)
+  {
+    $relationship = MarxRelationship::where('id', '=', $id)
+      ->with('user_relationship_type')
+      ->first();
+
+    if ($relationship == null) {
+      return Utils::errorResponseNotFound('relationship');
+    }
+    return response()->json($relationship);
+  }
+
+
+
+
+
+
+
+
+
+  // old method, keep for the moment
 
   public function getAll(Request $request)
   {

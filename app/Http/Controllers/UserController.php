@@ -43,6 +43,7 @@ class UserController extends Controller
   }
 
   // TODO verify that he come from my auth0 account!
+  // TODO rework with the new model
   public function login(Request $request)
   {
     $validator = Validator::make($request->all(), [
@@ -77,6 +78,15 @@ class UserController extends Controller
 
     return response()->json(['api_token' => $token->__toString()]);
   }
+
+
+
+
+
+
+
+
+  
 
   public function getAll()
   {
