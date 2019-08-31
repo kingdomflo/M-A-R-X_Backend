@@ -16,6 +16,7 @@ class CreateMarxRelationshipTypesTable extends Migration
         Schema::dropIfExists('marx_relationshipTypes');
         Schema::create('marx_relationship_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('code');
             $table->string('name');
             $table->timestamps();
         });

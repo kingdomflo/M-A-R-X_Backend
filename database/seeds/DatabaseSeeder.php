@@ -27,15 +27,23 @@ class DatabaseSeeder extends Seeder
         $user->save();
 
         $relationshipType = new MarxRelationshipType();
+        $relationshipType->code = 'Friend';
         $relationshipType->name = 'Friend';
         $relationshipType->save();
 
         $relationshipType = new MarxRelationshipType();
+        $relationshipType->code = 'Colleague';
         $relationshipType->name = 'Colleague';
         $relationshipType->save();
 
         $relationshipType = new MarxRelationshipType();
+        $relationshipType->code = 'Family';
         $relationshipType->name = 'Family';
+        $relationshipType->save();
+
+        $relationshipType = new MarxRelationshipType();
+        $relationshipType->code = 'Other';
+        $relationshipType->name = 'Other';
         $relationshipType->save();
 
         $userRelationshipType = new MarxUserRelationshipType();
@@ -52,6 +60,11 @@ class DatabaseSeeder extends Seeder
         $userRelationshipType = new MarxUserRelationshipType();
         $userRelationshipType->user_id = 1;
         $userRelationshipType->relationship_type_id = 3;
+        $userRelationshipType->save();
+
+        $userRelationshipType = new MarxUserRelationshipType();
+        $userRelationshipType->user_id = 1;
+        $userRelationshipType->relationship_type_id = 4;
         $userRelationshipType->save();
 
         $relationship = new MarxRelationship();

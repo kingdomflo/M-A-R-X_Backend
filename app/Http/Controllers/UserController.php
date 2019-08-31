@@ -44,6 +44,7 @@ class UserController extends Controller
 
   // TODO verify that he come from my auth0 account!
   // TODO rework with the new model
+  // TODO add at the create all the relationship type
   public function login(Request $request)
   {
     $validator = Validator::make($request->all(), [
