@@ -21,6 +21,7 @@ class CreateMarxUserRelationshipTypesTable extends Migration
             $table->integer('relationship_type_id')->unsigned();
             $table->foreign('relationship_type_id')->references('id')->on('marx_relationship_types');
             $table->index(['user_id', 'relationship_type_id']);
+            $table->double('reminder_date');
             $table->timestamps();
         });
     }

@@ -40,7 +40,18 @@ class DatabaseSeeder extends Seeder
 
         $userRelationshipType = new MarxUserRelationshipType();
         $userRelationshipType->user_id = 1;
+        $userRelationshipType->relationship_type_id = 1;
+        $userRelationshipType->save();
+
+        $userRelationshipType = new MarxUserRelationshipType();
+        $userRelationshipType->user_id = 1;
         $userRelationshipType->relationship_type_id = 2;
+        $userRelationshipType->reminder_date = 7;
+        $userRelationshipType->save();
+
+        $userRelationshipType = new MarxUserRelationshipType();
+        $userRelationshipType->user_id = 1;
+        $userRelationshipType->relationship_type_id = 3;
         $userRelationshipType->save();
 
         $relationship = new MarxRelationship();

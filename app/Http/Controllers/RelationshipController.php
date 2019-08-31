@@ -14,6 +14,7 @@ use App\Jobs\RelationshipMapper;
 
 use App\Models\Entity\Relationship;
 use App\Models\MarxRelationshipType;
+use App\Models\MarxUserRelationshipType;
 
 class RelationshipController extends Controller
 {
@@ -40,7 +41,10 @@ class RelationshipController extends Controller
 
   public function getAllRelationshipType(Request $request)
   {
-    return Utils::camelCaseKeys(MarxRelationshipType::all()->toArray());
+    // return Utils::camelCaseKeys(MarxRelationshipType::all()->toArray());
+    $list = MarxUserRelationshipType::where('user_id', '=', $request->input('token_user_id'))
+      ->with('relationship_type')->get();
+    return Utils::camelCaseKeys($list->toArray());
   }
 
   public function getAllRelationship(Request $request)
