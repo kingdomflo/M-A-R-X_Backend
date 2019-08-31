@@ -3,6 +3,7 @@
 The API for the mobile application Money And Relationship eXperience
 Just an app to manage to who I owe money and who owe me money
 
+Composer install: php composer.phar install
 
 Lumen - Eloquent command:
 
