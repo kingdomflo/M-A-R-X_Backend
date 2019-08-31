@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
 
 use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\Signer\Key;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 
 class Auth0
@@ -45,7 +46,7 @@ class Auth0
             $token = (new Parser())->parse((string)$header);
             if ($token->verify($signer, env('JWT_TOKEN_SIGN'))) {
 
-                if ($token->getClaim('userId') != $request->input('userId') ||
+                if ($token->getClaim('user_id') != $request->input('user_id') ||
                     $token->getClaim('name') != $request->input('name')) {
                     return response(array(
                         'error' => true,

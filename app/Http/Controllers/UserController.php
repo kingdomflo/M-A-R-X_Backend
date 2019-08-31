@@ -47,7 +47,7 @@ class UserController extends Controller
   public function login(Request $request)
   {
     $validator = Validator::make($request->all(), [
-      'userId' => 'required',
+      'user_id' => 'required',
       'name' => 'required'
     ]);
 
@@ -56,13 +56,13 @@ class UserController extends Controller
     }
 
     $user;
-    $userLink = MarxUser::where('auth0Id', '=', $request->input('userId'))
+    $userLink = MarxUser::where('auth0_id', '=', $request->input('user_id'))
       ->take(1)
       ->get();
 
     if (count($userLink) == 0) {
       $user = new MarxUser;
-      $user->auth0_id = $request->input('userId');
+      $user->auth0_id = $request->input('user_id');
       $user->name = $request->input('name');
       $user->save();
     } else {
@@ -76,7 +76,7 @@ class UserController extends Controller
       ->sign($signer, env('JWT_TOKEN_SIGN'))
       ->getToken();
 
-    return response()->json(['api_token' => $token->__toString()]);
+    return response()->json(['apiToken' => $token->__toString()]);
   }
 
 

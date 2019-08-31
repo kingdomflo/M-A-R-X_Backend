@@ -40,21 +40,24 @@ class RelationshipController extends Controller
 
   public function getAllRelationshipType(Request $request)
   {
-    return MarxRelationshipType::all();
+    return Utils::camelCaseKeys(MarxRelationshipType::all()->toArray());
   }
 
   public function getAllRelationship(Request $request)
   {
-    return MarxRelationship::whereHas('userRelationshipType', function ($query) use ($request) {
-      $query->where('userId', '=', $request->input('tokenUserId'));
-    })->with('userRelationshipType')->get();
-  }
+    $list = MarxRelationship::whereHas('user_relationship_type', function ($query) use ($request) {
+      $query->where('user_id', '=', $request->input('token_user_id'));
+    })->with('user_relationship_type')->get();
 
+    return Utils::camelCaseKeys($list->toArray());
+  }  
+
+  // TODO with real object
   public function createRelationship(Request $request)
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required',
-      'relationshipTypeId' => 'required',
+      'userRelationshipTypeId' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -63,22 +66,22 @@ class RelationshipController extends Controller
 
     $relationship = new MarxRelationship;
     $relationship->name = $request->input('name');
-    $relationship->user_relationship_type_id = $request->input('relationshipTypeId');
+    $relationship->user_relationship_type_id = $request->input('userRelationshipTypeId');
     $relationship->save();
 
-    return response()->json($relationship);
+    return Utils::camelCaseKeys($relationship->toArray());
   }
 
   public function getOneRelationship(Request $request, $id)
   {
     $relationship = MarxRelationship::where('id', '=', $id)
-      ->with('userRelationshipType')
+      ->with('user_relationship_type')
       ->first();
 
     if ($relationship == null) {
       return Utils::errorResponseNotFound('relationship');
     }
-    return response()->json($relationship);
+    return Utils::camelCaseKeys($relationship->toArray());
   }
 
 

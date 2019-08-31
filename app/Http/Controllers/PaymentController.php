@@ -48,12 +48,12 @@ class PaymentController extends Controller
 
   public function getAllPayment(Request $request)
   {
-    $whereArray = array(['userId', '=', $request->input('tokenUserId')]);
+    $whereArray = array(['user_id', '=', $request->input('token_user_id')]);
     if ($request->input('type') != null) {
       $whereArray[] = (['type', '=', $request->input('type')]);
     }
-    if ($request->input('relationshipId') != null) {
-      $whereArray[] = (['relationshipId', '=', $request->input('relationshipId')]);
+    if ($request->input('relationship_id') != null) {
+      $whereArray[] = (['relationship_id', '=', $request->input('relationship_id')]);
     }
     if ($request->input('refunded') != null) {
       $refundBool;
@@ -71,24 +71,25 @@ class PaymentController extends Controller
       ->with('relationship')
       ->get();
 
-    return $list;
+    return Utils::camelCaseKeys($list->toArray());
   }
 
   public function getOnePayment(Request $request, $id)
   {
     $payment = MarxPayment::where('id', '=', $id)
-      ->where('userId', '=', $request->input('tokenUserId'))
+      ->where('user_id', '=', $request->input('token_user_id'))
       ->with('relationship')
-      ->with('reminderDate')
+      ->with('reminder_date')
       ->first();
 
     if ($payment == null) {
       return Utils::errorResponseNotFound('payment');
     }
 
-    return response()->json($payment);
+    return Utils::camelCaseKeys($payment->toArray());
   }
 
+  // TODO with real object
   public function createPayment(Request $request)
   {
     $validator = Validator::make($request->all(), [
@@ -104,7 +105,6 @@ class PaymentController extends Controller
       return Utils::errorResponse($validator->errors()->all());
     }
 
-    // TODO with real object
     $payment = new MarxPayment;
     $payment->title = $request->input('title');
     $payment->relationship_id = $request->input('relationship_id');
@@ -119,7 +119,7 @@ class PaymentController extends Controller
     }
     $payment->save();
 
-    return response()->json($payment);
+    return Utils::camelCaseKeys($payment->toArray());
   }
 
   public function refundedPayment(Request $request, $id)
@@ -139,14 +139,14 @@ class PaymentController extends Controller
 
     $payment->save();
 
-    return response()->json($payment);
+    return Utils::camelCaseKeys($payment->toArray());
   }
 
   // Have it in a DB or simple string ?
   // For the moment, simple string
   public function getSuggestedCurrencies(Request $request) {
     // return MarxCurrency::all();
-    return array('Euro', 'Dollar', 'Yen', 'Gold', 'Ecu', 'PokeDollar', 'Other')
+    return array('Euro', 'Dollar', 'Yen', 'Gold', 'Ecu', 'PokeDollar', 'Other');
   }
 
   

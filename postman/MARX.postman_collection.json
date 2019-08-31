@@ -1,298 +1,171 @@
 {
-	"variables": [],
 	"info": {
-		"name": "MARX",
 		"_postman_id": "4cdaeb54-7729-c747-373a-d5e41a9c5387",
+		"name": "MARX",
 		"description": "TFE project",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Login - Subscribe",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/login",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
+					},
+					{
+						"key": "it-this-my-auth",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYXV0aDB8NWI4YmNkYjg0YjNlMTQwZGUzMDEwZTc3IiwibmFtZSI6Imtpbmdkb21mbG8xNkBnbWFpbC5jb20iLCJpYXQiOjE1NDg1ODMzMjR9.Xle-GcFzcjed_JfFD2-OgxBpec034Z9i_Mf1lD1xmNY"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"user_id\" :\"auth0|5b8bcdb84b3e140de3010e77\",\r\n\"email\" :\"kingdomflo16@gmail.com\",\r\n\"name\" : \"John Doe\"\r\n}\r\n"
+					"raw": "{\r\n\"user_id\" :\"auth0|5b8bcdb84b3e140de3010e77\",\r\n\"name\" : \"kingdomflo16@gmail.com\"\r\n}\r\n"
 				},
-				"description": ""
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend_PHP",
+						"public",
+						"login"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get all relationshiptype",
+			"name": "Get all relationship type",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/relationshipType",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					}
 				],
-				"body": {},
-				"description": ""
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/relationship/relationshipType",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend_PHP",
+						"public",
+						"relationship",
+						"relationshipType"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get all relationshiptype by user",
+			"name": "Get all relationship",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/relationshipType",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					}
 				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Add relationshiptype to user",
-			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/relationshipType",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\" : \"bofilouu\"\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Update user name",
-			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\" : \"Flo new name\"\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Delete relationshiptype by user",
-			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/relationshipType/1",
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get relationship by user",
-			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/relationship",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Add relationship to user",
-			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/relationship",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\t\"name\": \"Jean-Marc\",\r\n\t\"relationship_type_id\": 5\r\n}\r\n"
-				},
-				"description": ""
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/relationship/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend_PHP",
+						"public",
+						"relationship",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Get one relationship",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/relationship/3",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					}
 				],
-				"body": {},
-				"description": ""
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/relationship/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend_PHP",
+						"public",
+						"relationship",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add relationship to user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Jean-Marc\",\r\n\t\"userRelationshipTypeId\": 1\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/relationship",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend_PHP",
+						"public",
+						"relationship"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Delete relationship",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/relationship/3",
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Update relationship",
-			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/relationship/2",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\t\"name\": \"Jean-Claudeeeeeeeee\",\r\n\t\"relationship_type_id\": 7\r\n}\r\n"
+					"mode": "formdata",
+					"formdata": []
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get all currencies",
-			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/currencies",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get all currencies by user",
-			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/currencies",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Add currency to user",
-			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/currencies",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\" : \"Euro4266685\",\n\t\"label\" : \"eur\"\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get all payment by user",
-			"request": {
 				"url": {
-					"raw": "http://localhost/M-A-R-X_Backend/public/user/payment?type=cre",
+					"raw": "http://localhost/M-A-R-X_Backend/public/relationship/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -300,189 +173,317 @@
 					"path": [
 						"M-A-R-X_Backend",
 						"public",
-						"user",
+						"relationship",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update relationship",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Jean-Claudeeeeeeeee\",\r\n\t\"relationship_type_id\": 7\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/relationship/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"relationship",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all payment by user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/payment?type=cre",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
 						"payment"
 					],
 					"query": [
 						{
 							"key": "type",
-							"value": "cre",
-							"equals": true,
-							"description": ""
+							"value": "cre"
 						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
-					}
-				],
-				"body": {},
-				"description": ""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "get one payment by user",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/payment/1",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					}
 				],
-				"body": {},
-				"description": ""
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/payment/32",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"payment",
+						"32"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "delete on epayment",
+			"name": "delete one payment",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/payment/1",
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					}
 				],
-				"body": {},
-				"description": ""
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/payment/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"payment",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "add payment",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/payment",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					},
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "    {\n        \"relationship_id\": 1,\n        \"user_currencies_id\": 1,\n        \"title\": \"Indien\",\n        \"amount\": 9,\n        \"date\": \"2018-11-12\",\n        \"type\": \"cre\"\n    }"
 				},
-				"description": ""
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"payment"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "update a payment",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/payment/3",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					},
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "    {\n        \"relationship_id\": 1,\n        \"user_currencies_id\": 1,\n        \"title\": \"Indiennnelololol\",\n        \"amount\": 95,\n        \"date\": \"2018-11-12\",\n        \"detail\" : \"mwais\"\n    }"
 				},
-				"description": ""
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/payment/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"payment",
+						"3"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Get all reminder date by user",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/reminderdate",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					}
 				],
-				"body": {},
-				"description": ""
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/reminderdate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"reminderdate"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "delete reminder date",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/reminderdate/1",
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					}
 				],
-				"body": {},
-				"description": ""
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/reminderdate/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"reminderdate",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "add reminder date",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/reminderdate",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					},
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"payment_id\" : 2,\n\t\"date\" : \"2018-12-15\"\n}"
 				},
-				"description": ""
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/reminderdate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"reminderdate"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "refunded a payment",
 			"request": {
-				"url": "http://localhost/M-A-R-X_Backend/public/user/payment/refunded/1",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ",
-						"description": ""
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
 					}
 				],
-				"body": {},
-				"description": ""
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend/public/payment/refunded/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend",
+						"public",
+						"payment",
+						"refunded",
+						"1"
+					]
+				}
 			},
 			"response": []
 		}

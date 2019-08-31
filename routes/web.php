@@ -25,10 +25,10 @@ $router->post('relationship', 'RelationshipController@createRelationship');
 $router->get('relationship/{id}', 'RelationshipController@getOneRelationship');
 
 $router->get('payment', 'PaymentController@getAllPayment');
+$router->get('payment/suggestedCurrencies', 'PaymentController@getSuggestedCurrencies');
 $router->get('payment/{id}', 'PaymentController@getOnePayment');
 $router->post('payment', 'PaymentController@createPayment');
 $router->put('payment/refunded/{id}', 'PaymentController@refundedPayment');
-$router->get('payment/suggestedCurrencies', 'PaymentController@getSuggestedCurrencies');
 
 
 

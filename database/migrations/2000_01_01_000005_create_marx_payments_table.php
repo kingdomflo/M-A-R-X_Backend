@@ -16,10 +16,10 @@ class CreateMarxPaymentsTable extends Migration
         Schema::dropIfExists('marx_payments');
         Schema::create('marx_payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userId')->unsigned();
-            $table->foreign('userId')->references('id')->on('marx_users');
-            $table->integer('relationshipId')->unsigned();
-            $table->foreign('relationshipId')->references('id')->on('marx_relationships');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('marx_users');
+            $table->integer('relationship_id')->unsigned();
+            $table->foreign('relationship_id')->references('id')->on('marx_relationships');
             $table->string('title', 20);
             $table->string('detail', 280)->nullable();
             $table->string('currency', 10);
@@ -27,7 +27,7 @@ class CreateMarxPaymentsTable extends Migration
             $table->date('date');
             $table->string('type', 3);
             $table->boolean('refunded')->default(false);
-            $table->date('refundedDate')->nullable();
+            $table->date('refunded_date')->nullable();
             $table->timestamps();
         });
     }

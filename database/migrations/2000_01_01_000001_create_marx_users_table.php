@@ -19,10 +19,9 @@ class CreateMarxUsersTable extends Migration
         Schema::create('marx_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50)->nullable();
-            $table->string('auth0Id')->unique();
+            $table->string('auth0_id');
             $table->string('provider')->nullable();
             $table->timestamps();
-
         });
     }
 

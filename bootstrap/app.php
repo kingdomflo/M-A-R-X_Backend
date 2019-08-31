@@ -24,6 +24,7 @@ $app = new Laravel\Lumen\Application(
 );
 
 $app->withFacades();
+$app->bind('redirect', 'Laravel\Lumen\Http\Redirector');
 
 $app->withEloquent();
 
@@ -90,6 +91,8 @@ $app->middleware([
 // $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Grohiro\LaravelCamelCaseJson\CamelCaseJsonResponseServiceProvider::class);
+
 
 /*
 |--------------------------------------------------------------------------

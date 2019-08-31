@@ -5,7 +5,7 @@ namespace App\Utils;
 use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 
 class Utils
 {
@@ -33,5 +33,18 @@ class Utils
             'message' => ['The ' . $item . ' didn\'t belong to you']
         ), 409);
     }
+
+    static public function camelCaseKeys(Array $array)
+    {
+        $formatted = [];
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $formatted[Str::camel($key)] = Utils::camelCaseKeys($value);
+            } else {
+                $formatted[Str::camel($key)] = $value;    
+            }
+        }
+        return $formatted;        
+    }  
 
 }

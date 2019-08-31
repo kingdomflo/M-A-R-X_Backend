@@ -14,10 +14,10 @@ class CreateMarxReminderDateTable extends Migration
     public function up()
     {
         Schema::dropIfExists('marx_reminderDates');
-        Schema::create('marx_reminderDates', function (Blueprint $table) {
+        Schema::create('marx_reminder_dates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('paymentId')->unsigned();
-            $table->foreign('paymentId')->references('id')->on('marx_payments');
+            $table->integer('payment_id')->unsigned();
+            $table->foreign('payment_id')->references('id')->on('marx_payments');
             $table->date('date');
             $table->timestamps();
         });
