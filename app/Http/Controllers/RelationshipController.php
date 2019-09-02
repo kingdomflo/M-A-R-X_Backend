@@ -32,7 +32,8 @@ class RelationshipController extends Controller
       'getAllRelationshipType',
       'getAllRelationship',
       'createRelationship',
-      'getOneRelationship'
+      'getOneRelationship',
+      'changeUserRelationshipTypeDelay'
     ]]);
   }
 
@@ -86,6 +87,19 @@ class RelationshipController extends Controller
       return Utils::errorResponseNotFound('relationship');
     }
     return Utils::camelCaseKeys($relationship->toArray());
+  }
+
+  public function changeUserRelationshipTypeDelay(Request $request, $id) {
+    $userRelationshipType = MarxUserRelationshipType::find($id);
+
+    if ($userRelationshipType == null) {
+      return Utils::errorResponseNotFound('relationship type');
+    }
+
+    $userRelationshipType->reminder_date = $request->input('delay');
+    $userRelationshipType->save();
+
+    return Utils::camelCaseKeys($userRelationshipType->toArray());
   }
 
 

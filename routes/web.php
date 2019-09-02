@@ -23,6 +23,7 @@ $router->get('relationship/relationshipType', 'RelationshipController@getAllRela
 $router->get('relationship', 'RelationshipController@getAllRelationship');
 $router->post('relationship', 'RelationshipController@createRelationship');
 $router->get('relationship/{id}', 'RelationshipController@getOneRelationship');
+$router->put('relationship/userRelationshipTypeDelay/{id}', 'RelationshipController@changeUserRelationshipTypeDelay');
 
 $router->get('payment', 'PaymentController@getAllPayment');
 $router->get('payment/suggestedCurrencies', 'PaymentController@getSuggestedCurrencies');
