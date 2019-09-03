@@ -38,12 +38,8 @@ class RelationshipController extends Controller
     ]]);
   }
 
-  // rework the route and method
-  // TODO rework with model
-
   public function getAllRelationshipType(Request $request)
   {
-    // return Utils::camelCaseKeys(MarxRelationshipType::all()->toArray());
     $list = MarxUserRelationshipType::where('user_id', '=', $request->input('token_user_id'))
       ->with('relationship_type')->get();
     return Utils::camelCaseKeys($list->toArray());
@@ -111,12 +107,12 @@ class RelationshipController extends Controller
     return Utils::camelCaseKeys($userRelationshipType->toArray());
   }
 
-  // TODO rework this
+  // TODO block duplicate
   public function updateRelationship(Request $request, $id)
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required',
-      'relationship_type_id' => 'required',
+      'userRelationshipType.id' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -134,10 +130,10 @@ class RelationshipController extends Controller
     }
 
     $relationship->name = $request->input('name');
-    $relationship->user_relationship_type_id = $request->input('relationship_type_id');
+    $relationship->user_relationship_type_id = $request->all()['userRelationshipType']['id'];
     $relationship->save();
 
-    return response()->json($relationship);
+    return Utils::camelCaseKeys($relationship->toArray());
   }
 
 

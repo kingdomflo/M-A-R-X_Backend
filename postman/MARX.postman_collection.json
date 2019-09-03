@@ -209,16 +209,16 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"name\": \"Jean-Claudeeeeeeeee\",\r\n\t\"relationship_type_id\": 7\r\n}\r\n"
+					"raw": "{\r\n    \"name\": \"Samy Nou\",\r\n    \"userRelationshipType\": {\r\n        \"id\": 2\r\n    }\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost/M-A-R-X_Backend/public/relationship/1",
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/relationship/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"M-A-R-X_Backend",
+						"M-A-R-X_Backend_PHP",
 						"public",
 						"relationship",
 						"1"
