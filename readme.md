@@ -21,10 +21,13 @@ Seed the data base: php artisan db:seed
 
 | get - relationship |
 | --- |
-| { 
-  id: number, 
-  name: string  
-  }  |
+| ```json
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```  |
 
 # Lumen
 
