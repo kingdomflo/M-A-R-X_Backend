@@ -21,8 +21,8 @@ $router->post('login', 'UserController@login');
 
 $router->get('relationship/relationshipType', 'RelationshipController@getAllRelationshipType');
 $router->get('relationship', 'RelationshipController@getAllRelationship');
-$router->post('relationship', 'RelationshipController@createRelationship');
 $router->get('relationship/{id}', 'RelationshipController@getOneRelationship');
+$router->post('relationship', 'RelationshipController@createRelationship');
 $router->put('relationship/{id}', 'RelationshipController@updateRelationship');
 $router->put('relationship/userRelationshipTypeDelay/{id}', 'RelationshipController@changeUserRelationshipTypeDelay');
 

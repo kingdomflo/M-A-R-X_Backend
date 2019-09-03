@@ -49,7 +49,7 @@ response:
 request:
 the id in the route is the id of the UserRelationshipType
 {
-    "reminderDay": "number"
+    "reminderDate": "number"
 }
 response:
 {
@@ -58,7 +58,7 @@ response:
         "id": "number",
         "name": "string"
     },
-    "reminderDay": "number"
+    "reminderDate": "number"
 }
 ```
 

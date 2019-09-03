@@ -56,14 +56,14 @@ class RelationshipController extends Controller
     })->with('user_relationship_type')->get();
 
     return Utils::camelCaseKeys($list->toArray());
-  }  
+  } 
 
-  // TODO with real object
+  // TODO block duplicate
   public function createRelationship(Request $request)
   {
     $validator = Validator::make($request->all(), [
-      'name' => 'required',
-      'userRelationshipTypeId' => 'required',
+    'name' => 'required',
+    'userRelationshipType.id' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -72,7 +72,7 @@ class RelationshipController extends Controller
 
     $relationship = new MarxRelationship;
     $relationship->name = $request->input('name');
-    $relationship->user_relationship_type_id = $request->input('userRelationshipTypeId');
+    $relationship->user_relationship_type_id = $request->all()['userRelationshipType']['id'];
     $relationship->save();
 
     return Utils::camelCaseKeys($relationship->toArray());
@@ -92,7 +92,7 @@ class RelationshipController extends Controller
 
   public function changeUserRelationshipTypeDelay(Request $request, $id) {
     $validator = Validator::make($request->all(), [
-      'reminderDay' => 'required',
+      'reminderDate' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -105,7 +105,7 @@ class RelationshipController extends Controller
       return Utils::errorResponseNotFound('relationship type');
     }
 
-    $userRelationshipType->reminder_date = $request->input('reminderDay');
+    $userRelationshipType->reminder_date = $request->input('reminderDate');
     $userRelationshipType->save();
 
     return Utils::camelCaseKeys($userRelationshipType->toArray());

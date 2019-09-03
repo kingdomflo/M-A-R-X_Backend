@@ -41,14 +41,27 @@
 		},
 		{
 			"name": "Get all relationship type",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [
 					{
 						"key": "Api-Token",
 						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
 				"url": {
 					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/relationship/relationshipType",
 					"protocol": "http",
@@ -118,7 +131,7 @@
 			"response": []
 		},
 		{
-			"name": "Add relationship to user",
+			"name": "Add a relationship",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -133,7 +146,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"name\": \"Jean-Marc\",\r\n\t\"userRelationshipTypeId\": 1\r\n}\r\n"
+					"raw": "{\r\n    \"name\": \"Luc\",\r\n    \"userRelationshipType\": {\r\n        \"id\": 2\r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/relationship",
@@ -215,6 +228,41 @@
 			"response": []
 		},
 		{
+			"name": "Update the reminder date for relationship type",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"reminderDate\": 4\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/relationship/userRelationshipTypeDelay/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend_PHP",
+						"public",
+						"relationship",
+						"userRelationshipTypeDelay",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get all payment by user",
 			"request": {
 				"method": "GET",
@@ -225,13 +273,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost/M-A-R-X_Backend/public/payment?type=cre",
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/payment?type=cre",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"M-A-R-X_Backend",
+						"M-A-R-X_Backend_PHP",
 						"public",
 						"payment"
 					],
@@ -256,16 +304,16 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost/M-A-R-X_Backend/public/payment/32",
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/payment/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"M-A-R-X_Backend",
+						"M-A-R-X_Backend_PHP",
 						"public",
 						"payment",
-						"32"
+						"1"
 					]
 				}
 			},
