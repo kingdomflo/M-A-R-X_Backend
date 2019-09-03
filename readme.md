@@ -19,13 +19,12 @@ Seed the data base: php artisan db:seed
 
 ## API Route
 
-get - relationship 
+### get - relationship 
 
 ```json
 {
-  "firstName": "John",
-  "lastName": "Smith",
-  "age": 25
+  id: number,
+  name: string
 }
 ```  
 
