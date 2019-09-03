@@ -54,6 +54,7 @@ The login route will have an other token to be sure that the user is from us Aut
 
 ### get - relationship/{id} 
 ```json
+Return:
 {
     "id": "number",
     "name": "string",
