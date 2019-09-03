@@ -25,20 +25,46 @@ The login route will have an other token to be sure that the user is from us Aut
 ### get - relationship/relationshipType
 ```json
 {
-  "id": "number",
-  "relationshipType": {
     "id": "number",
-    "name": "string"
-  },
-  "reminderDay": "number"
+    "relationshipType": {
+        "id": "number",
+        "name": "string"
+    },
+    "reminderDay": "number"
 }
 ```
 
 ### get - relationship 
 ```json
+[
+    {
+        "id": "number",
+        "name": "string",
+        "userRelationshipType": {
+            "id": "number",
+            "relationshipType": {
+                "id": "number",
+                "name": "string"
+            },
+            "reminderDay": "number"
+        }
+    }
+]
+```
+
+### get - relationship/{id} 
+```json
 {
-  "id": "number",
-  "name": "string"
+    "id": "number",
+    "name": "string",
+    "userRelationshipType": {
+        "id": "number",
+        "relationshipType": {
+            "id": "number",
+            "name": "string"
+        },
+        "reminderDay": "number"
+    }
 }
 ```
 
