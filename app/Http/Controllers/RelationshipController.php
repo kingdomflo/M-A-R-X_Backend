@@ -38,8 +38,14 @@ class RelationshipController extends Controller
     ]]);
   }
 
+  // TODO multilang
   public function getAllRelationshipType(Request $request)
   {
+    $lang = $request->header('content-language');
+    $acceptLang = array('en', 'fr', 'nl', 'de', 'no');
+    if(!in_array($lang, $acceptLang)) {
+      $lang = 'en';
+    }
     $list = MarxUserRelationshipType::where('user_id', '=', $request->input('token_user_id'))
       ->with('relationship_type')->get();
     return Utils::camelCaseKeys($list->toArray());

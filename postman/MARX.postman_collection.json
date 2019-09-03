@@ -56,6 +56,11 @@
 						"name": "Content-Type",
 						"value": "application/x-www-form-urlencoded",
 						"type": "text"
+					},
+					{
+						"key": "Content-Language",
+						"value": "fr",
+						"type": "text"
 					}
 				],
 				"body": {
