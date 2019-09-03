@@ -24,6 +24,7 @@ The login route will have an other token to be sure that the user is from us Aut
 
 ### get - relationship/relationshipType
 ```json
+response:
 {
     "id": "number",
     "relationshipType": {
@@ -36,6 +37,7 @@ The login route will have an other token to be sure that the user is from us Aut
 
 ### get - relationship 
 ```json
+response:
 [
     {
         "id": "number",
@@ -54,7 +56,7 @@ The login route will have an other token to be sure that the user is from us Aut
 
 ### get - relationship/{id} 
 ```json
-Return:
+response:
 {
     "id": "number",
     "name": "string",
