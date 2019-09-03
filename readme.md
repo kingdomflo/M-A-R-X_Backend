@@ -21,12 +21,12 @@ Seed the data base: php artisan db:seed
 
 ### get - relationship 
 
-```json
+~~~json
 {
   "id": "number",
   "name": "string"
 }
-```  
+~~~
 
 ```json
 {
