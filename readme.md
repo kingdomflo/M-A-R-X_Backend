@@ -19,20 +19,26 @@ Seed the data base: php artisan db:seed
 
 ## API Route
 
-### get - relationship 
+All route, except login, must have the header Api-Token with the token from Auth0
+The login route will have an other token to be sure that the user is from us Auth0 service
 
-~~~json
+### get - relationship/relationshipType
+```json
+{
+  "id": "number",
+  "relationshipType": {
+                        "id: "number",
+                        "name": string
+                      },
+  "reminderDay": "number"
+}
+```
+
+### get - relationship 
+```json
 {
   "id": "number",
   "name": "string"
-}
-~~~
-
-```json
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "age": 25
 }
 ```
 
