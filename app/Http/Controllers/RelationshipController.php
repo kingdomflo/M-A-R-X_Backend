@@ -33,7 +33,8 @@ class RelationshipController extends Controller
       'getAllRelationship',
       'createRelationship',
       'getOneRelationship',
-      'changeUserRelationshipTypeDelay'
+      'changeUserRelationshipTypeDelay',
+      'updateRelationship'
     ]]);
   }
 
@@ -90,16 +91,53 @@ class RelationshipController extends Controller
   }
 
   public function changeUserRelationshipTypeDelay(Request $request, $id) {
+    $validator = Validator::make($request->all(), [
+      'reminderDay' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+      return Utils::errorResponse($validator->errors()->all());
+    }
+
     $userRelationshipType = MarxUserRelationshipType::find($id);
 
     if ($userRelationshipType == null) {
       return Utils::errorResponseNotFound('relationship type');
     }
 
-    $userRelationshipType->reminder_date = $request->input('delay');
+    $userRelationshipType->reminder_date = $request->input('reminderDay');
     $userRelationshipType->save();
 
     return Utils::camelCaseKeys($userRelationshipType->toArray());
+  }
+
+  // TODO rework this
+  public function updateRelationship(Request $request, $id)
+  {
+    $validator = Validator::make($request->all(), [
+      'name' => 'required',
+      'relationship_type_id' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+      return Utils::errorResponse($validator->errors()->all());
+    }
+
+    $relationship = MarxRelationship::find($id);
+
+    if ($relationship == null) {
+      return Utils::errorResponseNotFound('relationship');
+    }
+
+    if ($relationship->user_relationship_type->user_id != $request->input('token_user_id')) {
+      return Utils::errorResponseNotBelongToYou('relationship');
+    }
+
+    $relationship->name = $request->input('name');
+    $relationship->user_relationship_type_id = $request->input('relationship_type_id');
+    $relationship->save();
+
+    return response()->json($relationship);
   }
 
 

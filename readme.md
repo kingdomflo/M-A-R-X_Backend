@@ -35,6 +35,24 @@ response:
 }
 ```
 
+### put - relationship/userRelationshipTypeDelay/{id}
+```json
+request:
+the id in the route is the id of the UserRelationshipType
+{
+    "reminderDay": "number"
+}
+response:
+{
+    "id": "number",
+    "relationshipType": {
+        "id": "number",
+        "name": "string"
+    },
+    "reminderDay": "number"
+}
+```
+
 ### get - relationship 
 ```json
 response:
@@ -56,6 +74,54 @@ response:
 
 ### get - relationship/{id} 
 ```json
+response:
+{
+    "id": "number",
+    "name": "string",
+    "userRelationshipType": {
+        "id": "number",
+        "relationshipType": {
+            "id": "number",
+            "name": "string"
+        },
+        "reminderDay": "number"
+    }
+}
+```
+
+### post - relationship 
+```json
+request: 
+{
+    "name": "string",
+    "userRelationshipType": {
+        "id": "number",
+    }
+}
+response:
+{
+    "id": "number",
+    "name": "string",
+    "userRelationshipType": {
+        "id": "number",
+        "relationshipType": {
+            "id": "number",
+            "name": "string"
+        },
+        "reminderDay": "number"
+    }
+}
+```
+
+### put - relationship/{id}
+```json
+request: 
+{
+    "name": "string",
+    "userRelationshipType": {
+        "id": "number",
+    }
+}
 response:
 {
     "id": "number",
