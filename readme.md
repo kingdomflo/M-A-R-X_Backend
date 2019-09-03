@@ -28,6 +28,13 @@ Seed the data base: php artisan db:seed
 }
 ```  
 
+```json
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
 
 
 # Lumen
