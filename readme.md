@@ -27,9 +27,9 @@ The login route will have an other token to be sure that the user is from us Aut
 {
   "id": "number",
   "relationshipType": {
-                        "id": "number",
-                        "name": "string"
-                      },
+    "id": "number",
+    "name": "string"
+  },
   "reminderDay": "number"
 }
 ```
