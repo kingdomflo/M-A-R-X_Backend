@@ -19,9 +19,8 @@ Seed the data base: php artisan db:seed
 
 ## API Route
 
-| get - relationship |
-| --- |
-| 
+get - relationship 
+
 ```json
 {
   "firstName": "John",
@@ -29,7 +28,8 @@ Seed the data base: php artisan db:seed
   "age": 25
 }
 ```  
-|
+
+
 
 # Lumen
 
