@@ -21,7 +21,10 @@ Seed the data base: php artisan db:seed
 
 | get - relationship |
 | --- |
-| { id: number, name: string  } |
+| <p> { 
+  id: number, 
+  name: string  
+  } </p> |
 
 # Lumen
 
