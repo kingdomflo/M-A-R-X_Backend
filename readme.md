@@ -11,8 +11,23 @@ Create the data base: php artisan migrate
 
 Seed the data base: php artisan db:seed
 
+
+## DataBase
+
 ![alt UML](https://raw.githubusercontent.com/kingdomflo/M-A-R-X_Backend/master/out/plantUml/class/class.png)
 
+
+## API Route
+
+| get - relationship |
+| --- |
+| {
+    id: number,
+    name: string
+  }
+|
+
+# Lumen
 
 ## Lumen PHP Framework Information
 
