@@ -23,8 +23,8 @@ Seed the data base: php artisan db:seed
 
 ```json
 {
-  id: number,
-  name: string
+  "id": "number",
+  "name": "string"
 }
 ```  
 
