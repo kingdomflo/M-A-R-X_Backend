@@ -3,6 +3,15 @@
 The API for the mobile application Money And Relationship eXperience
 Just an app to manage to who I owe money and who owe me money
 
+<!-- 
+### Choice of PHP
+
+"Well, why do you use this ugly language that is PHP when you have NodeJS, C#, Java or Pyhton ?"
+Good question! Because I have a nice web host in OVH.com and who only work with PHP
+And PHP is not as ugly as they say he is, especially if we use a good framework like Symfony or Laravel (Lumen is an API centred framework based on Laravel)
+But a NestJS version is currently in work
+-->
+
 Composer install: php composer.phar install
 
 Lumen - Eloquent command:
