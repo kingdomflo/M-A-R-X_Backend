@@ -91,6 +91,72 @@ class DatabaseSeeder extends Seeder
         $relationshipTypeTranslation->name = 'Ami';
         $relationshipTypeTranslation->save();
 
+        // nederlands - dutch label
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Other';
+        $relationshipTypeTranslation->lang = 'nl';
+        $relationshipTypeTranslation->name = 'Anders';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Family';
+        $relationshipTypeTranslation->lang = 'nl';
+        $relationshipTypeTranslation->name = 'Familie';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Colleague';
+        $relationshipTypeTranslation->lang = 'nl';
+        $relationshipTypeTranslation->name = 'Collega';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Friend';
+        $relationshipTypeTranslation->lang = 'nl';
+        $relationshipTypeTranslation->name = 'Vriend';
+        $relationshipTypeTranslation->save();
+
+        // deutsch - german label
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Other';
+        $relationshipTypeTranslation->lang = 'de';
+        $relationshipTypeTranslation->name = 'Anders';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Family';
+        $relationshipTypeTranslation->lang = 'de';
+        $relationshipTypeTranslation->name = 'Familie';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Colleague';
+        $relationshipTypeTranslation->lang = 'de';
+        $relationshipTypeTranslation->name = 'Kollege';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Friend';
+        $relationshipTypeTranslation->lang = 'de';
+        $relationshipTypeTranslation->name = 'Freund';
+        $relationshipTypeTranslation->save();
+
+        // norsk - norwegian label
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Other';
+        $relationshipTypeTranslation->lang = 'no';
+        $relationshipTypeTranslation->name = 'Annen';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Family';
+        $relationshipTypeTranslation->lang = 'no';
+        $relationshipTypeTranslation->name = 'Familie';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Colleague';
+        $relationshipTypeTranslation->lang = 'no';
+        $relationshipTypeTranslation->name = 'Kollega';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Friend';
+        $relationshipTypeTranslation->lang = 'no';
+        $relationshipTypeTranslation->name = 'Venn';
+        $relationshipTypeTranslation->save();
+
         $userRelationshipType = new MarxUserRelationshipType();
         $userRelationshipType->user_id = 1;
         $userRelationshipType->relationship_type_id = 1;
@@ -111,6 +177,9 @@ class DatabaseSeeder extends Seeder
         $userRelationshipType->user_id = 1;
         $userRelationshipType->relationship_type_id = 4;
         $userRelationshipType->save();
+
+
+        // all this below is for testing
 
         $relationship = new MarxRelationship();
         $relationship->name = "Samy";
