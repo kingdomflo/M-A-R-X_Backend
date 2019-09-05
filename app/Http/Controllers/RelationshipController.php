@@ -47,7 +47,7 @@ class RelationshipController extends Controller
 
     if($request->header('content-language') != 'en') {
       foreach($list->toArray() as $key => $item) {
-        $list[$key]['relationship_type']['name'] = Utils::translateRelationshipType($request->header('content-language'), $item['relationship_type'])['code'];
+        $list[$key]['relationship_type']['name'] = Utils::translateRelationshipType($request->header('content-language'), $item['relationship_type'])['name'];
       }
     }
 
