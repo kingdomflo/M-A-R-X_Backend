@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+use App\Models\MarxRelationshipTypeTranslation;
+
 class Utils
 {
 
@@ -45,6 +47,27 @@ class Utils
             }
         }
         return $formatted;        
-    }  
+    }
+    
+    static public function translateRelationshipType($lang, $relationshipType)
+    {
+        if(!in_array($lang, Utils::listOfAcceptedlanguage())) {
+            $lang = 'en';
+        }
+
+        $translation = MarxRelationshipTypeTranslation::where('lang', '=', $lang)
+            ->where('code', '=', $relationshipType['code'])->first();
+
+        if ($translation != null) {
+            $relationshipType['name'] = $translation['name'];
+        }
+        
+        return $relationshipType;
+    }
+
+    static public function listOfAcceptedLanguage()
+    {
+        return array('fr', 'nl', 'de', 'no');
+    }
 
 }

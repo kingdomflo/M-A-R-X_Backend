@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Models\MarxRelationship;
 use App\Models\MarxUser;
 use App\Models\MarxRelationshipType;
+use App\Models\MarxRelationshipTypeTranslation;
 use App\Models\MarxUserRelationshipType;
 use App\Models\MarxCurrencies;
 use App\Models\MarxUserCurrencies;
@@ -45,6 +46,50 @@ class DatabaseSeeder extends Seeder
         $relationshipType->code = 'Other';
         $relationshipType->name = 'Other';
         $relationshipType->save();
+
+        // english label
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Other';
+        $relationshipTypeTranslation->lang = 'en';
+        $relationshipTypeTranslation->name = 'Other';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Family';
+        $relationshipTypeTranslation->lang = 'en';
+        $relationshipTypeTranslation->name = 'Family';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Colleague';
+        $relationshipTypeTranslation->lang = 'en';
+        $relationshipTypeTranslation->name = 'Colleague';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Friend';
+        $relationshipTypeTranslation->lang = 'en';
+        $relationshipTypeTranslation->name = 'Friend';
+        $relationshipTypeTranslation->save();
+
+        // french label
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Other';
+        $relationshipTypeTranslation->lang = 'fr';
+        $relationshipTypeTranslation->name = 'Autre';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Family';
+        $relationshipTypeTranslation->lang = 'fr';
+        $relationshipTypeTranslation->name = 'Famille';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Colleague';
+        $relationshipTypeTranslation->lang = 'fr';
+        $relationshipTypeTranslation->name = 'Collègue';
+        $relationshipTypeTranslation->save();
+        $relationshipTypeTranslation = new MarxRelationshipTypeTranslation();
+        $relationshipTypeTranslation->code = 'Friend';
+        $relationshipTypeTranslation->lang = 'fr';
+        $relationshipTypeTranslation->name = 'Ami';
+        $relationshipTypeTranslation->save();
 
         $userRelationshipType = new MarxUserRelationshipType();
         $userRelationshipType->user_id = 1;

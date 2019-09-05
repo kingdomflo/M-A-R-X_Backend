@@ -14,6 +14,7 @@ use App\Jobs\RelationshipMapper;
 
 use App\Models\Entity\Relationship;
 use App\Models\MarxRelationshipType;
+use App\Models\MarxRelationshipTypeTranslation;
 use App\Models\MarxUserRelationshipType;
 
 class RelationshipController extends Controller
@@ -38,16 +39,18 @@ class RelationshipController extends Controller
     ]]);
   }
 
-  // TODO multilang
+  // Can better call to multilangue ?
   public function getAllRelationshipType(Request $request)
   {
-    $lang = $request->header('content-language');
-    $acceptLang = array('en', 'fr', 'nl', 'de', 'no');
-    if(!in_array($lang, $acceptLang)) {
-      $lang = 'en';
-    }
     $list = MarxUserRelationshipType::where('user_id', '=', $request->input('token_user_id'))
       ->with('relationship_type')->get();
+
+    if($request->header('content-language') != 'en') {
+      foreach($list->toArray() as $key => $item) {
+        $list[$key]['relationship_type']['name'] = Utils::translateRelationshipType($request->header('content-language'), $item['relationship_type'])['code'];
+      }
+    }
+
     return Utils::camelCaseKeys($list->toArray());
   }
 
@@ -55,8 +58,14 @@ class RelationshipController extends Controller
   {
     $list = MarxRelationship::whereHas('user_relationship_type', function ($query) use ($request) {
       $query->where('user_id', '=', $request->input('token_user_id'));
-    })->with('user_relationship_type')->get();
+      })->with('user_relationship_type')->get();
 
+    if($request->header('content-language') != 'en') {
+      foreach($list->toArray() as $key => $item) {
+        $list[$key]['user_relationship_type']['relationship_type']['name'] = Utils::translateRelationshipType($request->header('content-language'), $item['user_relationship_type']['relationship_type'])['name'];
+      }
+    }
+    
     return Utils::camelCaseKeys($list->toArray());
   } 
 
@@ -89,6 +98,11 @@ class RelationshipController extends Controller
     if ($relationship == null) {
       return Utils::errorResponseNotFound('relationship');
     }
+
+    if($request->header('content-language') != 'en') {
+      $relationship['user_relationship_type']['relationship_type']['name'] = Utils::translateRelationshipType($request->header('content-language'), $relationship['user_relationship_type']['relationship_type'])['name'];
+    }
+
     return Utils::camelCaseKeys($relationship->toArray());
   }
 
