@@ -43,9 +43,6 @@ class PaymentController extends Controller
     ]]);
   }
 
-  // rework the route and method
-  // TODO rework with the model
-
   public function getAllPayment(Request $request)
   {
     $whereArray = array(['user_id', '=', $request->input('token_user_id')]);
@@ -89,12 +86,11 @@ class PaymentController extends Controller
     return Utils::camelCaseKeys($payment->toArray());
   }
 
-  // TODO with real object
   public function createPayment(Request $request)
   {
     $validator = Validator::make($request->all(), [
-      'relationship_id' => 'required',
-      'user_currencies_id' => 'required',
+      'relationship.id' => 'required',
+      'currency' => 'required',
       'title' => 'required',
       'amount' => 'required',
       'date' => 'required',
@@ -107,10 +103,10 @@ class PaymentController extends Controller
 
     $payment = new MarxPayment;
     $payment->title = $request->input('title');
-    $payment->relationship_id = $request->input('relationship_id');
+    $payment->relationship_id = $request->input('relationship.id');
     $payment->user_id = $request->input('token_user_id');
     $payment->date = $request->input('date');
-    $payment->user_currencies_id = $request->input('user_currencies_id');
+    $payment->currency = $request->input('currency');
     $payment->amount = $request->input('amount');
     $payment->type = $request->input('type');
 

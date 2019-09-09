@@ -194,6 +194,7 @@ class DatabaseSeeder extends Seeder
         $payment->amount = 12.50;
         $payment->date = date('Y-m-d');
         $payment->type = 'deb';
+        $payment->currency = 'Euro';
         $payment->save();
 
         $payment = new MarxPayment();
@@ -203,6 +204,7 @@ class DatabaseSeeder extends Seeder
         $payment->amount = 9;
         $payment->date = date('Y-m-d');
         $payment->type = 'cre';
+        $payment->currency = 'Gold';
         $payment->save();
 
         $reminderDate = new MarxReminderDate();

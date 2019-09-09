@@ -28,9 +28,10 @@ $router->put('relationship/userRelationshipTypeDelay/{id}', 'RelationshipControl
 
 $router->get('payment', 'PaymentController@getAllPayment');
 $router->get('payment/suggestedCurrencies', 'PaymentController@getSuggestedCurrencies');
-$router->get('payment/{id}', 'PaymentController@getOnePayment');
 $router->post('payment', 'PaymentController@createPayment');
+$router->get('payment/{id}', 'PaymentController@getOnePayment');
 $router->put('payment/refunded/{id}', 'PaymentController@refundedPayment');
+
 
 
 

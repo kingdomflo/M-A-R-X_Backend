@@ -309,7 +309,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/payment/1",
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/payment/SuggestedCurrencies",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -318,7 +318,66 @@
 						"M-A-R-X_Backend_PHP",
 						"public",
 						"payment",
-						"1"
+						"SuggestedCurrencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get suggested currencies",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/payment/suggestedCurrencies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend_PHP",
+						"public",
+						"payment",
+						"suggestedCurrencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"title\": \"Indien\",\n        \"amount\": 9,\n        \"date\": \"2018-11-12\",\n        \"type\": \"cre\",\n        \"currency\": \"Euro\",\n        \"relationship\": {\n        \t\"id\": 1\n        }\n    }"
+				},
+				"url": {
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"M-A-R-X_Backend_PHP",
+						"public",
+						"payment"
 					]
 				}
 			},
@@ -349,39 +408,6 @@
 						"public",
 						"payment",
 						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "add payment",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Api-Token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZGF0ZSI6IjIwMTgtMTEtMDQgMTM6MDc6MTkifQ.iTvH9DF_oCVmW9pLOOKl-HRTXUH2aQ0UgGrAwsP2GKQ"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "    {\n        \"relationship_id\": 1,\n        \"user_currencies_id\": 1,\n        \"title\": \"Indien\",\n        \"amount\": 9,\n        \"date\": \"2018-11-12\",\n        \"type\": \"cre\"\n    }"
-				},
-				"url": {
-					"raw": "http://localhost/M-A-R-X_Backend/public/payment",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"M-A-R-X_Backend",
-						"public",
-						"payment"
 					]
 				}
 			},
