@@ -518,18 +518,19 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"payment_id\" : 2,\n\t\"date\" : \"2018-12-15\"\n}"
+					"raw": "{\n\t\"payment\" : {\n\t\t\"id\": 2\n\t},\n\t\"date\" : \"2020-12-15\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost/M-A-R-X_Backend/public/reminderdate",
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/payment/reminderDate",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"M-A-R-X_Backend",
+						"M-A-R-X_Backend_PHP",
 						"public",
-						"reminderdate"
+						"payment",
+						"reminderDate"
 					]
 				}
 			},
