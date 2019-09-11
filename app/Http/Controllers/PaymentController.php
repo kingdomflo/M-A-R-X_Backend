@@ -18,6 +18,7 @@ use App\Models\MarxCurrencies;
 use App\Models\MarxUserCurrencies;
 use App\Models\MarxPayment;
 use App\Models\MarxCurrency;
+use App\Models\MarxReminderDate;
 
 use App\Utils\Utils;
 
@@ -39,7 +40,8 @@ class PaymentController extends Controller
       'getOnePayment',
       'createPayment',
       'refundedPayment',
-      'getSuggestedCurrencies'
+      'getSuggestedCurrencies',
+      'createReminderDate'
     ]]);
   }
 
@@ -143,6 +145,26 @@ class PaymentController extends Controller
   public function getSuggestedCurrencies(Request $request) {
     // return MarxCurrency::all();
     return array('Euro', 'Dollar', 'Yen', 'Gold', 'Ecu', 'PokeDollar', 'Other');
+  }
+
+  public function createReminderDate(Request $request)
+  {
+    $validator = Validator::make($request->all(), [
+      'payment.id' => 'required',
+      'date' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+      return Utils::errorResponse($validator->errors()->all());
+    }
+
+    $reminderDate = new MarxReminderDate;
+    $reminderDate->payment_id = $request->input('payment.id');
+    $reminderDate->date = $request->input('date');
+
+    $reminderDate->save();
+
+    return response()->json($reminderDate);
   }
 
   
