@@ -126,7 +126,7 @@ class PaymentController extends Controller
       return Utils::errorResponseNotFound('payment');
     }
 
-    if ($payment->user_id != $request->input('tokenUserId')) {
+    if ($payment->user_id != $request->input('token_user_id')) {
       return Utils::errorResponseNotBelongToYou('payment');
     }
 

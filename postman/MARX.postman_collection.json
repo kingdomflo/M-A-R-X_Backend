@@ -550,13 +550,13 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "http://localhost/M-A-R-X_Backend/public/payment/refunded/1",
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/payment/refunded/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"M-A-R-X_Backend",
+						"M-A-R-X_Backend_PHP",
 						"public",
 						"payment",
 						"refunded",
