@@ -17,9 +17,9 @@ class CreateMarxPaymentsTable extends Migration
         Schema::create('marx_payments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('marx_users');
+            $table->foreign('user_id')->references('id')->on('marx_users')->onDelete('cascade');;
             $table->integer('relationship_id')->unsigned();
-            $table->foreign('relationship_id')->references('id')->on('marx_relationships');
+            $table->foreign('relationship_id')->references('id')->on('marx_relationships')->onDelete('cascade');;
             $table->string('title', 20);
             $table->string('detail', 280)->nullable();
             $table->string('currency', 10);

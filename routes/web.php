@@ -22,6 +22,7 @@ $router->post('login', 'UserController@login');
 $router->get('relationship/relationshipType', 'RelationshipController@getAllRelationshipType');
 $router->get('relationship', 'RelationshipController@getAllRelationship');
 $router->get('relationship/{id}', 'RelationshipController@getOneRelationship');
+$router->delete('relationship/{id}', 'RelationshipController@deleteOneRelationship');
 $router->post('relationship', 'RelationshipController@createRelationship');
 $router->put('relationship/{id}', 'RelationshipController@updateRelationship');
 $router->put('relationship/userRelationshipTypeDelay/{id}', 'RelationshipController@changeUserRelationshipTypeDelay');
@@ -30,6 +31,7 @@ $router->get('payment', 'PaymentController@getAllPayment');
 $router->get('payment/suggestedCurrencies', 'PaymentController@getSuggestedCurrencies');
 $router->post('payment', 'PaymentController@createPayment');
 $router->get('payment/{id}', 'PaymentController@getOnePayment');
+$router->delete('payment/{id}', 'PaymentController@deleteOnePayment');
 $router->put('payment/refunded/{id}', 'PaymentController@refundedPayment');
 $router->post('payment/reminderDate', 'PaymentController@createReminderDate');
 

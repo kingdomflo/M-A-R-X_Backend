@@ -35,7 +35,8 @@ class RelationshipController extends Controller
       'createRelationship',
       'getOneRelationship',
       'changeUserRelationshipTypeDelay',
-      'updateRelationship'
+      'updateRelationship',
+      'deleteOneRelationship'
     ]]);
   }
 
@@ -154,6 +155,18 @@ class RelationshipController extends Controller
     $relationship->save();
 
     return Utils::camelCaseKeys($relationship->toArray());
+  }
+
+  public function deleteOneRelationship(Request $request, $id)
+  {
+    $relationship = MarxRelationship::find($id);
+
+    if ($relationship == null) {
+      return Utils::errorResponseNotFound('relationship');
+    }
+
+    $relationship->delete();
+    return response()->json($relationship);
   }
 
 

@@ -41,7 +41,8 @@ class PaymentController extends Controller
       'createPayment',
       'refundedPayment',
       'getSuggestedCurrencies',
-      'createReminderDate'
+      'createReminderDate',
+      'deleteOnePayment'
     ]]);
   }
 
@@ -165,6 +166,22 @@ class PaymentController extends Controller
     $reminderDate->save();
 
     return response()->json($reminderDate);
+  }
+
+  public function deleteOnePayment(Request $request, $id)
+  {
+    $payment = MarxPayment::find($id);
+
+    if ($payment == null) {
+      return Utils::errorResponseNotFound('payment');
+    }
+
+    if ($payment->user_id != $request->input('token_user_id')) {
+      return Utils::errorResponseNotBelongToYou('payment');
+    }
+
+    $payment->delete();
+    return response()->json($payment);
   }
 
   
@@ -305,23 +322,6 @@ class PaymentController extends Controller
 
     $payment->save();
 
-    return response()->json($payment);
-  }
-
-  public function delete(Request $request, $id)
-  {
-    // TODO test delete cascade after
-    $payment = MarxPayment::find($id);
-
-    if ($payment == null) {
-      return Utils::errorResponseNotFound('payment');
-    }
-
-    if ($payment->user_id != $request->input('token_user_id')) {
-      return Utils::errorResponseNotBelongToYou('payment');
-    }
-
-    $payment->delete();
     return response()->json($payment);
   }
 

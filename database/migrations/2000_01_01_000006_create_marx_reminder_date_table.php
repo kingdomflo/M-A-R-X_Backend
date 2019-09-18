@@ -17,7 +17,7 @@ class CreateMarxReminderDateTable extends Migration
         Schema::create('marx_reminder_dates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('payment_id')->unsigned();
-            $table->foreign('payment_id')->references('id')->on('marx_payments');
+            $table->foreign('payment_id')->references('id')->on('marx_payments')->onDelete('cascade');
             $table->date('date');
             $table->timestamps();
         });
