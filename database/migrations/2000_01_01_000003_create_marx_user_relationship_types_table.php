@@ -17,9 +17,9 @@ class CreateMarxUserRelationshipTypesTable extends Migration
         Schema::create('marx_user_relationship_types', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('marx_users');
+            $table->foreign('user_id')->references('id')->on('marx_users')->onDelete('cascade');
             $table->integer('relationship_type_id')->unsigned();
-            $table->foreign('relationship_type_id')->references('id')->on('marx_relationship_types')->onDelete('cascade');;
+            $table->foreign('relationship_type_id')->references('id')->on('marx_relationship_types')->onDelete('cascade');
             $table->index(['user_id', 'relationship_type_id']);
             $table->double('reminder_date');
             $table->timestamps();

@@ -66,6 +66,15 @@ class UserController extends Controller
       $user->auth0_id = $request->input('user_id');
       $user->name = $request->input('name');
       $user->save();
+
+      $relationshipType = MarxRelationshipType::all();
+      foreach($relationshipType as &$item) {
+        $userRelationshipType = new MarxUserRelationshipType;
+        $userRelationshipType->user_id = $user->id;
+        $userRelationshipType->relationship_type_id = $item->id;
+        $userRelationshipType->save();
+      }
+
     } else {
       $user = $userLink[0];
     }
