@@ -20,6 +20,9 @@ use App\Models\MarxUserCurrencies;
 use App\Utils\Utils;
 use App\Models\Entity\UserRelationshipType;
 
+use Auth0\SDK\API\Management;
+use Auth0\SDK\Auth0;
+
 class UserController extends Controller
 {
 
