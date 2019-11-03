@@ -1,6 +1,6 @@
 # M-A-R-X Backend
 
-The API for the mobile application Money And Relationship eXperience
+The Web Service for the mobile application Money And Relationship eXperience
 Just an app to manage to who I owe money and who owe me money
 
 <!-- 
@@ -286,6 +286,57 @@ response:
 ```json
 
 ```
+
+### get - payment/suggestedCurrencies
+```json
+response:
+[
+    "string"
+]
+```
+
+### put - payment/refunded/1
+```json
+to switch a payment from not refunded to refunded
+response:
+{
+    "id": "number",
+    "userId": "number",
+    "relationshipId": "number",
+    "title": "string",
+    "detail": "string",
+    "currency": "string",
+    "amount": "number",
+    "date": "date",
+    "type": "string",
+    "refunded": "number",
+    "refundedDate": "date",
+    "relationship": {
+        "id": "number",
+        "name": "string",
+        "userRelationshipTypeId": "number",
+    }
+}
+```
+
+### post - payment/reminderDate
+```json
+request:
+{
+	"payment" : {
+		"id": "number"
+	},
+	"date" : "date"
+}
+response:
+{
+    "payment_id": "number",
+    "date": "date",
+    "id": "number"
+}
+```
+
+$router->post('payment/reminderDate', 'PaymentController@createReminderDate');
 
 
 
