@@ -429,19 +429,19 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"relationship_id\": 1,\n        \"user_currencies_id\": 1,\n        \"title\": \"Indiennnelololol\",\n        \"amount\": 95,\n        \"date\": \"2018-11-12\",\n        \"detail\" : \"mwais\"\n    }"
+					"raw": "    {\n        \"title\": \"Indien\",\n        \"amount\": 9,\n        \"date\": \"2018-11-12\",\n        \"type\": \"cre\",\n        \"currency\": \"Euro\",\n        \"relationship\": {\n        \t\"id\": 2\n        }\n    }"
 				},
 				"url": {
-					"raw": "http://localhost/M-A-R-X_Backend/public/payment/3",
+					"raw": "http://localhost/M-A-R-X_Backend_PHP/public/payment/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"M-A-R-X_Backend",
+						"M-A-R-X_Backend_PHP",
 						"public",
 						"payment",
-						"3"
+						"2"
 					]
 				}
 			},

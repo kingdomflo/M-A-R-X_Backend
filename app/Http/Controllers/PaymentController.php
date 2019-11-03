@@ -38,6 +38,7 @@ class PaymentController extends Controller
 
       'getAllPayment',
       'getOnePayment',
+      'updateOnePayment',
       'createPayment',
       'refundedPayment',
       'getSuggestedCurrencies',
@@ -181,6 +182,40 @@ class PaymentController extends Controller
     }
 
     $payment->delete();
+    return response()->json($payment);
+  }
+
+  public function updateOnePayment(Request $request, $id)
+  {
+    $validator = Validator::make($request->all(), [
+      'relationship.id' => 'required',
+      'currency' => 'required',
+      'title' => 'required',
+      'amount' => 'required',
+      'date' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+      return Utils::errorResponse($validator->errors()->all());
+    }
+
+    $payment = MarxPayment::find($id);
+    if ($payment->user_id != $request->input('token_user_id')) {
+      return Utils::errorResponseNotBelongToYou('payment');
+    }
+
+    $payment->title = $request->input('title');
+    $payment->relationship_id = $request->input('relationship.id');
+    $payment->date = $request->input('date');
+    $payment->currency = $request->input('currency');
+    $payment->amount = $request->input('amount');
+
+    if ($request->input('detail')) {
+      $payment->detail = $request->input('detail');
+    }
+
+    $payment->save();
+
     return response()->json($payment);
   }
 

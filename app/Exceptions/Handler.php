@@ -54,10 +54,10 @@ class Handler extends ExceptionHandler
         // var_dump($e->getPrevious()->errorInfo[1]);
         // var_dump($e instanceof QueryException);
 
-        if (env('APP_DEBUG')) {
+        // if (env('APP_DEBUG')) {
 
-            return parent::render($request, $e);
-        }
+        //     return parent::render($request, $e);
+        // }
 
         if ($e instanceof HttpResponseException) {
             $status = Response::HTTP_INTERNAL_SERVER_ERROR;

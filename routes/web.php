@@ -31,6 +31,7 @@ $router->get('payment', 'PaymentController@getAllPayment');
 $router->get('payment/suggestedCurrencies', 'PaymentController@getSuggestedCurrencies');
 $router->post('payment', 'PaymentController@createPayment');
 $router->get('payment/{id}', 'PaymentController@getOnePayment');
+$router->put('payment/{id}', 'PaymentController@updateOnePayment');
 $router->delete('payment/{id}', 'PaymentController@deleteOnePayment');
 $router->put('payment/refunded/{id}', 'PaymentController@refundedPayment');
 $router->post('payment/reminderDate', 'PaymentController@createReminderDate');
