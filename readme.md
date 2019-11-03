@@ -31,6 +31,19 @@ Seed the data base: php artisan db:seed
 All route, except login, must have the header Api-Token with the token from Auth0
 The login route will have an other token to be sure that the user is from us Auth0 service
 
+### post - login
+```json
+request:
+{
+    "user_id": "string",
+    "name": "string"
+}
+response:
+{
+    "apiToken": "string"
+}
+```
+
 ### get - relationship/relationshipType
 ```json
 response:
@@ -146,10 +159,139 @@ response:
 }
 ```
 
+### delete - relationship/{id}
+```json
+
+```
+
+### get - payment 
+```json
+response:
+[
+    {
+        "id": "number",
+        "userId": "number",
+        "relationshipId": "number",
+        "title": "string",
+        "detail": "string",
+        "currency": "string",
+        "amount": "number",
+        "date": "date",
+        "type": "string",
+        "refunded": "number - 0 to false and 1 to true",
+        "refundedDate": "date",
+        "relationship": {
+            "id": "number",
+            "name": "string",
+            "userRelationshipTypeId": "number",
+        }
+    }
+]
+```
+
+### get - payment/{id}
+```json
+response:
+{
+    "id": "number",
+    "userId": "number",
+    "relationshipId": "number",
+    "title": "string",
+    "detail": "string",
+    "currency": "string",
+    "amount": "number",
+    "date": "date",
+    "type": "string",
+    "refunded": "number - 0 to false and 1 to true",
+    "refundedDate": "date",
+    "relationship": {
+        "id": "number",
+        "name": "string",
+        "userRelationshipTypeId": "number",
+    }
+}
+```
+
+### post - payment
+```json
+request:
+{
+    "title": "string",
+    "detail": "string - not required",
+    "amount": "number",
+    "date": "date",
+    "type": "string",
+    "currency": "string",
+    "relationship": {
+        "id": "number"
+    }
+}
+response:
+{
+    "id": "number",
+    "userId": "number",
+    "relationshipId": "number",
+    "title": "string",
+    "detail": "string",
+    "currency": "string",
+    "amount": "number",
+    "date": "date",
+    "type": "string",
+    "refunded": "number",
+    "refundedDate": "date",
+    "relationship": {
+        "id": "number",
+        "name": "string",
+        "userRelationshipTypeId": "number",
+    }
+}
+```
+
+### put - payment
+```json
+request:
+{
+    "title": "string",
+    "detail": "string - not required",
+    "amount": "number",
+    "date": "date",
+    "type": "string",
+    "currency": "string",
+    "relationship": {
+        "id": "number"
+    }
+}
+response:
+{
+    "id": "number",
+    "userId": "number",
+    "relationshipId": "number",
+    "title": "string",
+    "detail": "string",
+    "currency": "string",
+    "amount": "number",
+    "date": "date",
+    "type": "string",
+    "refunded": "number",
+    "refundedDate": "date",
+    "relationship": {
+        "id": "number",
+        "name": "string",
+        "userRelationshipTypeId": "number",
+    }
+}
+```
+
+### delete - payment/{id}
+```json
+
+```
+
+
 
 # Lumen
 
-## Lumen PHP Framework Information
+## Lumen PHP Framework Information (official message from Lumen)
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
 [![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
