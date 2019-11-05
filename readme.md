@@ -12,13 +12,11 @@ And PHP is not as ugly as they say he is, especially if we use a good framework 
 But a NestJS version is currently in work
 -->
 
-Composer install: php composer.phar install
+`php composer.phar install` Composer install
 
-Lumen - Eloquent command:
+`php artisan migrate` Create the data base 
 
-Create the data base: php artisan migrate
-
-Seed the data base: php artisan db:seed
+`php artisan db:seed` Seed the data base
 
 
 ## DataBase
